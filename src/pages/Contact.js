@@ -23,7 +23,6 @@ const Contact = ({ text, next }) => {
         setRedirect(true);
         setData({ email: "", subject: "", message: "" });
       }
-      console.log(response);
     } catch (error) {
       console.log(error);
     }

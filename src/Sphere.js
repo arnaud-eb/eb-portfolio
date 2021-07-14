@@ -25,11 +25,7 @@ const Sphere = () => {
     function wordSphere(canvas, texts, counts, options) {
       const π = Math.PI;
       const {
-        // width = 500,
-        // height = 500,
         radius = width * 0.3,
-        // radius = 150,
-        // padding = 50,
         fontSize = radius * 0.15,
         tilt = 0,
         initialVelocityX = 0,
@@ -162,7 +158,6 @@ const Sphere = () => {
 const Canvas = styled.canvas`
   width: 250px;
   height: 250px;
-  /* border: 1px solid black; */
   transform: translateX(-1.5rem);
 
   @media screen and (min-width: 800px) {

@@ -28,7 +28,6 @@ function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const openIndex = (e) => {
-    console.log(+e.target.dataset.idx);
     dispatch({ type: OPEN_INDEX, payload: +e.target.dataset.idx });
   };
 

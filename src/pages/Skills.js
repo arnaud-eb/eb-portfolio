@@ -45,10 +45,6 @@ const Wrapper = styled.div`
     display: none;
   }
 
-  .skills-bar section {
-    /* background-color: green; */
-  }
-
   .word-sphere {
     background-color: transparent;
     display: grid;
@@ -57,14 +53,11 @@ const Wrapper = styled.div`
 
   @media screen and (min-width: 1000px) {
     .skills-bar {
-      /* display: block;
-      background-color: black; */
       grid-template-rows: auto 1fr;
     }
 
     .skills-bar p {
       display: block;
-      /* background-color: red; */
       font-size: 1rem;
       padding: 0.5rem 1rem 0.5rem 2rem;
       color: var(--clr-black);

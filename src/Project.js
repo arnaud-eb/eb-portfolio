@@ -63,7 +63,6 @@ const Wrapper = styled.article(
     }
 
     div {
-      /* background-color: green; */
       height: 17rem;
       position: relative;
     }
@@ -87,10 +86,6 @@ const Wrapper = styled.article(
       place-items: center;
       perspective: 240px;
       a {
-        /* position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%); */
         background-color: var(--clr-pale-spring-bud);
         display: flex;
         justify-content: center;
@@ -99,8 +94,6 @@ const Wrapper = styled.article(
         width: 10rem;
         height: 10rem;
         border-radius: 50%;
-        /* visibility: hidden;
-        opacity: 0; */
         cursor: pointer;
         transition: 0.5s;
         transform: rotateY(90deg);
@@ -110,8 +103,6 @@ const Wrapper = styled.article(
       }
 
       &:hover a {
-        /* visibility: visible;
-      opacity: 1; */
         transform: rotateY(0deg);
       }
     }
@@ -121,7 +112,6 @@ const Wrapper = styled.article(
     }
 
     footer {
-      /* background-color: red; */
       position: relative;
       display: flex;
       flex-flow: row wrap;

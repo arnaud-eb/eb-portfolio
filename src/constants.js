@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 import React from "react";
 import { FaLinkedin, FaGithub, FaEnvelope } from "react-icons/fa";
 import { Home, Contact, Skills, Projects } from "./pages";
@@ -122,23 +123,23 @@ export const projects = [
     id: 1,
     title: "E-commerce",
     img: "./images/ecommerce.jpg",
-    url: "",
-    source: "",
+    url: "https://arnaud-eb.github.io/e-commerce/",
+    source: "https://github.com/arnaud-eb/e-commerce",
     languages: ["auth0", "React", "JS", "HTML", "CSS"],
   },
   {
     id: 2,
     title: "Dashboard",
     img: "./images/dashboard.jpg",
-    url: "",
-    source: "",
+    url: "https://arnaud-eb.github.io/dashboard/",
+    source: "https://github.com/arnaud-eb/dashboard",
     languages: ["FusionCharts", "auth0", "React", "JS", "HTML", "CSS"],
   },
   {
     id: 3,
     title: "Blockchain",
     img: "./images/blockchain.jpg",
-    url: "",
+    url: "https://blockchainpy.herokuapp.com/",
     source: "https://github.com/arnaud-eb/blockchain-project",
     languages: ["Python", "Flask", "Vue.js", "JS", "HTML", "CSS"],
   },

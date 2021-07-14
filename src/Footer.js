@@ -101,7 +101,7 @@ const Wrapper = styled.footer(
         align-items: center;
         background-color: transparent;
         border: none;
-        transition: var(--transition); /*all 1s ease-in-out 50ms*/
+        transition: var(--transition);
       }
 
       svg {
