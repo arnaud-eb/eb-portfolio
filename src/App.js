@@ -12,7 +12,6 @@ import {
   SIDEBAR_OPEN,
   SIDEBAR_CLOSE,
 } from "./actions";
-import { links } from "./constants";
 import "./App.css";
 
 const initialState = {
@@ -34,14 +33,14 @@ function App() {
   const moveUp = () => {
     dispatch({
       type: TRANS,
-      payload: { direction: "up", length: links.length },
+      payload: { direction: "up" },
     });
   };
 
   const moveDown = () => {
     dispatch({
       type: TRANS,
-      payload: { direction: "down", length: links.length },
+      payload: { direction: "down" },
     });
   };
 

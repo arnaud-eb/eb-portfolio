@@ -6,6 +6,8 @@ import {
   SIDEBAR_CLOSE,
 } from "./actions";
 
+import { nextPage, prevPage } from "./utils";
+
 const reducer = (state, action) => {
   switch (action.type) {
     case OPEN_INDEX:
@@ -33,7 +35,7 @@ const reducer = (state, action) => {
             ...state,
             isSidebarOpen: false,
             onGoing: true,
-            next: state.current > 1 ? state.current - 1 : action.payload.length,
+            next: prevPage(state.current),
             outClass: "rotateCubeBottomOut",
             inClass: "rotateCubeBottomIn",
           };
@@ -42,7 +44,7 @@ const reducer = (state, action) => {
             ...state,
             isSidebarOpen: false,
             onGoing: true,
-            next: state.current < action.payload.length ? state.current + 1 : 1,
+            next: nextPage(state.current),
             outClass: "rotateCubeTopOut",
             inClass: "rotateCubeTopIn",
           };
