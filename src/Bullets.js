@@ -5,13 +5,14 @@ import { links } from "./constants";
 const Bullets = ({ next, openIndex }) => {
   return (
     <Wrapper next={next}>
-      {links.map(({ id }) => (
+      {links.map(({ id, text }) => (
         <button
           type="button"
           data-idx={id}
           onClick={openIndex}
           key={id}
           className={`${next === id ? "active" : ""}`}
+          aria-label={text}
         />
       ))}
     </Wrapper>

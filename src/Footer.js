@@ -3,16 +3,25 @@ import SocialIcons from "./SocialIcons";
 import { links } from "./constants";
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 import styled, { css } from "styled-components";
+import { nextPage, prevPage } from "./utils";
 
 const Footer = ({ moveDown, moveUp, next }) => {
   return (
     <Wrapper next={next}>
       <h5>&copy; {new Date().getFullYear()} arnaud depierreux</h5>
       <div className="btn-container">
-        <button className="up-arrow" onClick={moveUp}>
+        <button
+          className="up-arrow"
+          onClick={moveUp}
+          aria-label={links[prevPage(next) - 1].text}
+        >
           <IoIosArrowUp />
         </button>
-        <button className="down-arrow" onClick={moveDown}>
+        <button
+          className="down-arrow"
+          onClick={moveDown}
+          aria-label={links[nextPage(next) - 1].text}
+        >
           <IoIosArrowDown />
         </button>
       </div>
