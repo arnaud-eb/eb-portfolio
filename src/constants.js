@@ -122,7 +122,7 @@ export const projects = [
   {
     id: 1,
     title: "E-commerce",
-    img: "./images/ecommerce.jpg",
+    img: "./images/ecommerce.avif",
     url: "https://arnaud-eb.github.io/e-commerce/",
     source: "https://github.com/arnaud-eb/e-commerce",
     languages: ["auth0", "React", "JS", "HTML", "CSS"],
@@ -130,7 +130,7 @@ export const projects = [
   {
     id: 2,
     title: "Dashboard",
-    img: "./images/dashboard.jpg",
+    img: "./images/dashboard.avif",
     url: "https://arnaud-eb.github.io/dashboard/",
     source: "https://github.com/arnaud-eb/dashboard",
     languages: ["FusionCharts", "auth0", "React", "JS", "HTML", "CSS"],
@@ -138,7 +138,7 @@ export const projects = [
   {
     id: 3,
     title: "Blockchain",
-    img: "./images/blockchain.jpg",
+    img: "./images/blockchain.avif",
     url: "https://blockchainpy.herokuapp.com/",
     source: "https://github.com/arnaud-eb/blockchain-project",
     languages: ["Python", "Flask", "Vue.js", "JS", "HTML", "CSS"],

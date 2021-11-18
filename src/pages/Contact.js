@@ -68,7 +68,7 @@ const Contact = ({ text, next }) => {
         <article>
           {redirect ? (
             <div className="thanks">
-              <img src="./images/thankyou.jpg" alt="thank you page" />
+              <img src="./images/thankyou.avif" alt="thank you page" />
               <h4>I will get back to you shortly.</h4>
             </div>
           ) : (
