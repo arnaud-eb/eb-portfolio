@@ -1,18 +1,50 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import styled from "styled-components";
 import SocialIcons from "./SocialIcons";
 import { links } from "./constants";
 import { FaTimes } from "react-icons/fa";
 
 const Sidebar = ({ next, isSidebarOpen, closeSidebar, openIndex }) => {
+  const el = useRef();
+
+  const keyDownHandler = (e) => {
+    if (e.key !== "Tab") return;
+
+    const focusableModalElements = el.current.querySelectorAll(
+      "a[href], button, h3"
+    );
+
+    const firstElement = focusableModalElements[0];
+    const lastElement =
+      focusableModalElements[focusableModalElements.length - 1];
+
+    if (!e.shiftKey && document.activeElement === lastElement) {
+      firstElement.focus();
+      return e.preventDefault();
+    }
+
+    if (e.shiftKey && document.activeElement === firstElement) {
+      lastElement.focus();
+      e.preventDefault();
+    }
+  };
+
+  useEffect(() => {
+    const event = window.addEventListener("keydown", keyDownHandler);
+    return () => {
+      window.removeEventListener("keydown", event);
+    };
+  }, []);
+
   return (
     <Wrapper>
-      <aside className={`${isSidebarOpen ? "show-sidebar" : ""}`}>
+      <aside className={`${isSidebarOpen ? "show-sidebar" : ""}`} ref={el}>
         <div>
           <h3
             data-idx={1}
             onClick={openIndex}
             style={next === 1 ? { cursor: "default" } : { cursor: "pointer" }}
+            tabindex={0}
           >
             eb
           </h3>
