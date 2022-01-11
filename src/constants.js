@@ -33,7 +33,7 @@ export const links = [
 export const social = [
   {
     id: 1,
-    url: "https://www.linkedin.com/in/josueespinosa",
+    url: "https://www.linkedin.com/in/arnaud-depierreux-1b7430217/",
     Icon: FaLinkedin,
   },
   {
