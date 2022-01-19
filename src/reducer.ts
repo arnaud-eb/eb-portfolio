@@ -1,16 +1,10 @@
-import {
-  TRANS,
-  OPEN_INDEX,
-  RESET,
-  SIDEBAR_OPEN,
-  SIDEBAR_CLOSE,
-} from "./actions";
-
 import { nextPage, prevPage } from "./utils";
+import { StateType } from "./App";
+import { ActionTypes } from "./types";
 
-const reducer = (state, action) => {
+const reducer = (state: StateType, action: ActionTypes): StateType => {
   switch (action.type) {
-    case OPEN_INDEX:
+    case "OPEN_INDEX":
       if (!state.onGoing && state.next !== action.payload) {
         return {
           ...state,
@@ -28,7 +22,7 @@ const reducer = (state, action) => {
         };
       }
       return state;
-    case TRANS:
+    case "TRANS":
       if (!state.onGoing) {
         if (action.payload.direction === "up") {
           return {
@@ -51,17 +45,17 @@ const reducer = (state, action) => {
         }
       }
       return state;
-    case RESET:
+    case "RESET":
       return {
         ...state,
         current: state.next,
-        outClass: false,
-        inClass: false,
+        outClass: "",
+        inClass: "",
         onGoing: false,
       };
-    case SIDEBAR_OPEN:
+    case "SIDEBAR_OPEN":
       return { ...state, isSidebarOpen: true };
-    case SIDEBAR_CLOSE:
+    case "SIDEBAR_CLOSE":
       return { ...state, isSidebarOpen: false };
     default:
       return state;
