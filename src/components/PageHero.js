@@ -1,6 +1,6 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import { links } from "./constants";
+import { links } from "../constants";
 
 const PageHero = ({ text, next }) => {
   return (

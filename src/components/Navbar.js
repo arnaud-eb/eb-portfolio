@@ -1,7 +1,7 @@
 import React from "react";
 import { FaBars } from "react-icons/fa";
 import styled, { css } from "styled-components";
-import { links } from "./constants";
+import { links } from "../constants";
 
 const Navbar = ({ next, openIndex, openSidebar }) => {
   return (

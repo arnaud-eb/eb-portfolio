@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
-import PageHero from "../PageHero";
-import Project from "../Project";
+import PageHero from "../components/PageHero";
+import Project from "../components/Project";
 import { projects } from "../constants";
 
 const Projects = ({ text, next }) => {

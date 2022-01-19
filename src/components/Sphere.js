@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import styled from "styled-components";
-import { texts, counts, options } from "./constants";
+import { texts, counts, options } from "../constants";
 
 const Sphere = () => {
   const el = useRef();

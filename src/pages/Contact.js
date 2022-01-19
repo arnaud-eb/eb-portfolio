@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import PageHero from "../PageHero";
-import SocialIcons from "../SocialIcons";
+import PageHero from "../components/PageHero";
+import SocialIcons from "../components/SocialIcons";
 import styled from "styled-components";
 
 const Contact = ({ text, next }) => {

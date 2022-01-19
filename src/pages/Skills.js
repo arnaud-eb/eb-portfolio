@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import Sphere from "../Sphere";
-import PageHero from "../PageHero";
-import Bar2D from "../Bar2D";
+import Sphere from "../components/Sphere";
+import PageHero from "../components/PageHero";
+import Bar2D from "../components/Bar2D";
 
 const Skills = ({ text, next }) => {
   return (

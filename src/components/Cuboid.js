@@ -1,5 +1,5 @@
 import React from "react";
-import { links } from "./constants";
+import { links } from "../constants";
 
 const Cuboid = ({ current, next, outClass, inClass, openIndex }) => {
   return (

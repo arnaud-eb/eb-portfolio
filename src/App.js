@@ -1,9 +1,9 @@
 import React, { useEffect, useReducer } from "react";
-import Navbar from "./Navbar";
-import Sidebar from "./Sidebar";
-import Cuboid from "./Cuboid";
-import Bullets from "./Bullets";
-import Footer from "./Footer";
+import Navbar from "./components/Navbar";
+import Sidebar from "./components/Sidebar";
+import Cuboid from "./components/Cuboid";
+import Bullets from "./components/Bullets";
+import Footer from "./components/Footer";
 import reducer from "./reducer";
 import {
   TRANS,

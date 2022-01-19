@@ -1,5 +1,5 @@
 import React from "react";
-import { social } from "./constants";
+import { social } from "../constants";
 
 const SocialIcons = () => {
   return (

@@ -1,6 +1,6 @@
 import React from "react";
 import styled, { css, keyframes } from "styled-components";
-import { skills } from "./constants";
+import { skills } from "../constants";
 
 const Bar2D = () => {
   return (

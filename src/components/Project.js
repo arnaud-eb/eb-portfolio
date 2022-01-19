@@ -2,7 +2,7 @@ import React from "react";
 import styled, { css } from "styled-components";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { FaGithub } from "react-icons/fa";
-import { links } from "./constants";
+import { links } from "../constants";
 
 const Project = ({
   id,

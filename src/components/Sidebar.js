@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import styled from "styled-components";
 import SocialIcons from "./SocialIcons";
-import { links } from "./constants";
+import { links } from "../constants";
 import { FaTimes } from "react-icons/fa";
 
 const Sidebar = ({ next, isSidebarOpen, closeSidebar, openIndex }) => {

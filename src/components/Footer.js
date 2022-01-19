@@ -1,9 +1,9 @@
 import React from "react";
 import SocialIcons from "./SocialIcons";
-import { links } from "./constants";
+import { links } from "../constants";
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 import styled, { css } from "styled-components";
-import { nextPage, prevPage } from "./utils";
+import { nextPage, prevPage } from "../utils";
 
 const Footer = ({ moveDown, moveUp, next }) => {
   return (
