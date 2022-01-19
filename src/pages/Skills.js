@@ -12,7 +12,7 @@ const Skills = ({ text, next }) => {
         <article className="skills-bar">
           <p>
             I use HTML, CSS and JavaScript. Though constantly changing, my focus
-            right now is React, Node and Express.
+            right now is React, TypeScript and GraphQL.
           </p>
           <Bar2D />
         </article>
