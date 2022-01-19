@@ -2,7 +2,16 @@ import React from "react";
 import styled, { css } from "styled-components";
 import { links } from "../constants";
 
-const Bullets = ({ next, openIndex }) => {
+interface BulletsProps {
+  next: number;
+  openIndex: (e: React.MouseEvent<HTMLButtonElement>) => void;
+}
+
+interface BulletsStyledProps {
+  next: number;
+}
+
+const Bullets = ({ next, openIndex }: BulletsProps) => {
   return (
     <Wrapper next={next}>
       {links.map(({ id, text }) => (
@@ -19,7 +28,7 @@ const Bullets = ({ next, openIndex }) => {
   );
 };
 
-const Wrapper = styled.div(
+const Wrapper = styled.div<BulletsStyledProps>(
   ({ next }) => css`
     position: absolute;
     top: 40%;
