@@ -1,8 +1,8 @@
 import { nextPage, prevPage } from "./utils";
-import { StateType } from "./App";
+import { IState } from "./App";
 import { ActionTypes } from "./types";
 
-const reducer = (state: StateType, action: ActionTypes): StateType => {
+const reducer = (state: IState, action: ActionTypes): IState => {
   switch (action.type) {
     case "OPEN_INDEX":
       if (!state.onGoing && state.next !== action.payload) {

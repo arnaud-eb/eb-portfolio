@@ -1,60 +1,69 @@
 import React, { useEffect, useReducer } from "react";
+
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
 import Cuboid from "./components/Cuboid";
 import Bullets from "./components/Bullets";
 import Footer from "./components/Footer";
 import reducer from "./reducer";
-import {
-  TRANS,
-  OPEN_INDEX,
-  RESET,
-  SIDEBAR_OPEN,
-  SIDEBAR_CLOSE,
-} from "./actions";
+
 import "./App.css";
+
+export interface IState {
+  isSidebarOpen: boolean;
+  current: number;
+  next: number;
+  outClass: string;
+  inClass: string;
+  onGoing: boolean;
+}
 
 const initialState = {
   isSidebarOpen: false,
   current: 1,
   next: 1,
-  outClass: false,
-  inClass: false,
+  outClass: "",
+  inClass: "",
   onGoing: false,
 };
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const openIndex = (e) => {
-    dispatch({ type: OPEN_INDEX, payload: +e.target.dataset.idx });
+  const openIndex = (e: React.MouseEvent<HTMLElement>) => {
+    if (!(e.target instanceof HTMLElement)) {
+      return;
+    }
+    if (e.target.dataset.idx) {
+      dispatch({ type: "OPEN_INDEX", payload: +e.target.dataset.idx });
+    }
   };
 
   const moveUp = () => {
     dispatch({
-      type: TRANS,
+      type: "TRANS",
       payload: { direction: "up" },
     });
   };
 
   const moveDown = () => {
     dispatch({
-      type: TRANS,
+      type: "TRANS",
       payload: { direction: "down" },
     });
   };
 
   const openSidebar = () => {
-    dispatch({ type: SIDEBAR_OPEN });
+    dispatch({ type: "SIDEBAR_OPEN" });
   };
 
   const closeSidebar = () => {
-    dispatch({ type: SIDEBAR_CLOSE });
+    dispatch({ type: "SIDEBAR_CLOSE" });
   };
 
   useEffect(() => {
     const id = setTimeout(() => {
-      dispatch({ type: RESET });
+      dispatch({ type: "RESET" });
     }, 600);
     return () => {
       clearTimeout(id);
@@ -62,30 +71,32 @@ function App() {
   }, [state.next]);
 
   useEffect(() => {
-    const event = window.addEventListener("keydown", (e) => {
+    const handler = (e: KeyboardEvent) => {
       if (e.code === "ArrowUp") {
         moveUp();
       }
       if (e.code === "ArrowDown") {
         moveDown();
       }
-    });
+    };
+    window.addEventListener("keydown", handler);
     return () => {
-      window.removeEventListener("keydown", event);
+      window.removeEventListener("keydown", handler);
     };
   }, []);
 
   useEffect(() => {
-    const event = window.addEventListener("wheel", (e) => {
+    const handler = (e: WheelEvent) => {
       if (e.deltaY < 0) {
         moveUp();
       }
       if (e.deltaY > 0) {
         moveDown();
       }
-    });
+    };
+    window.addEventListener("wheel", handler);
     return () => {
-      window.removeEventListener("wheel", event);
+      window.removeEventListener("wheel", handler);
     };
   }, []);
 
