@@ -5,7 +5,17 @@ import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 import styled, { css } from "styled-components";
 import { nextPage, prevPage } from "../utils";
 
-const Footer = ({ moveDown, moveUp, next }) => {
+interface FooterProps {
+  moveDown: () => void;
+  moveUp: () => void;
+  next: number;
+}
+
+interface FooterStyledProps {
+  next: number;
+}
+
+const Footer = ({ moveDown, moveUp, next }: FooterProps) => {
   return (
     <Wrapper next={next}>
       <h5>&copy; {new Date().getFullYear()} arnaud depierreux</h5>
@@ -30,7 +40,7 @@ const Footer = ({ moveDown, moveUp, next }) => {
   );
 };
 
-const Wrapper = styled.footer(
+const Wrapper = styled.footer<FooterStyledProps>(
   ({ next }) => css`
     position: absolute;
     left: 0;
