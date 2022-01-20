@@ -3,7 +3,17 @@ import { FaBars } from "react-icons/fa";
 import styled, { css } from "styled-components";
 import { links } from "../constants";
 
-const Navbar = ({ next, openIndex, openSidebar }) => {
+interface NavbarProps {
+  next: number;
+  openIndex: (e: React.MouseEvent<HTMLElement>) => void;
+  openSidebar: (e: React.MouseEvent<HTMLElement>) => void;
+}
+
+interface NavbarStyledProps {
+  next: number;
+}
+
+const Navbar = ({ next, openIndex, openSidebar }: NavbarProps) => {
   return (
     <Wrapper next={next}>
       <div className="nav-center">
@@ -29,7 +39,7 @@ const Navbar = ({ next, openIndex, openSidebar }) => {
   );
 };
 
-const Wrapper = styled.nav(
+const Wrapper = styled.nav<NavbarStyledProps>(
   ({ next }) => css`
     height: 4rem;
     display: flex;
