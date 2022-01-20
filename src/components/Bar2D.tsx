@@ -2,6 +2,10 @@ import React from "react";
 import styled, { css, keyframes } from "styled-components";
 import { skills } from "../constants";
 
+interface Bard2DStyledProps {
+  percentage: number;
+}
+
 const Bar2D = () => {
   return (
     <Wrapper>
@@ -38,7 +42,7 @@ const grow = keyframes`
   }
 `;
 
-const Div = styled.div(
+const Div = styled.div<Bard2DStyledProps>(
   ({ percentage }) => css`
     position: relative;
     background: var(--clr-puce);
