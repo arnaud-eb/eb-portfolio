@@ -4,15 +4,26 @@ import SocialIcons from "./SocialIcons";
 import { links } from "../constants";
 import { FaTimes } from "react-icons/fa";
 
-const Sidebar = ({ next, isSidebarOpen, closeSidebar, openIndex }) => {
-  const el = useRef();
+interface SideBarProps {
+  next: number;
+  isSidebarOpen: boolean;
+  closeSidebar: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  openIndex: (e: React.MouseEvent<HTMLElement>) => void;
+}
 
-  const keyDownHandler = (e) => {
-    if (e.key !== "Tab") return;
+const Sidebar = ({
+  next,
+  isSidebarOpen,
+  closeSidebar,
+  openIndex,
+}: SideBarProps) => {
+  const el = useRef<HTMLElement | null>(null);
 
-    const focusableModalElements = el.current.querySelectorAll(
-      "a[href], button, h3"
-    );
+  const keyDownHandler = (e: KeyboardEvent) => {
+    if (e.key !== "Tab" || !el.current) return;
+
+    const focusableModalElements: NodeListOf<HTMLElement> =
+      el.current.querySelectorAll("a[href], button, h3");
 
     const firstElement = focusableModalElements[0];
     const lastElement =
@@ -30,9 +41,9 @@ const Sidebar = ({ next, isSidebarOpen, closeSidebar, openIndex }) => {
   };
 
   useEffect(() => {
-    const event = window.addEventListener("keydown", keyDownHandler);
+    window.addEventListener("keydown", keyDownHandler);
     return () => {
-      window.removeEventListener("keydown", event);
+      window.removeEventListener("keydown", keyDownHandler);
     };
   }, []);
 
@@ -44,7 +55,7 @@ const Sidebar = ({ next, isSidebarOpen, closeSidebar, openIndex }) => {
             data-idx={1}
             onClick={openIndex}
             style={next === 1 ? { cursor: "default" } : { cursor: "pointer" }}
-            tabindex={0}
+            tabIndex={0}
           >
             eb
           </h3>
