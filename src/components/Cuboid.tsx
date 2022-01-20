@@ -1,7 +1,21 @@
 import React from "react";
 import { links } from "../constants";
 
-const Cuboid = ({ current, next, outClass, inClass, openIndex }) => {
+interface CuboidProps {
+  current: number;
+  next: number;
+  outClass: string;
+  inClass: string;
+  openIndex: (e: React.MouseEvent<HTMLButtonElement>) => void;
+}
+
+const Cuboid = ({
+  current,
+  next,
+  outClass,
+  inClass,
+  openIndex,
+}: CuboidProps) => {
   return (
     <div className="cuboid">
       {links.map(({ id, Component, colors, text }) => {
