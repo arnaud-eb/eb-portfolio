@@ -2,7 +2,17 @@ import React from "react";
 import styled, { css } from "styled-components";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { FaGithub } from "react-icons/fa";
-import { links } from "../constants";
+import { links, IProject } from "../constants";
+
+interface ProjectProps extends IProject {
+  next: number;
+  handleNext: () => void;
+  handlePrev: () => void;
+}
+
+interface ProjectStyledProps {
+  next: number;
+}
 
 const Project = ({
   id,
@@ -14,7 +24,7 @@ const Project = ({
   next,
   handleNext,
   handlePrev,
-}) => {
+}: ProjectProps) => {
   return (
     <Wrapper next={next}>
       <div>
@@ -49,7 +59,7 @@ const Project = ({
 };
 
 const Wrapper = styled.article(
-  ({ next }) => css`
+  ({ next }: ProjectStyledProps) => css`
     position: relative;
     grid-template-rows: auto 1fr;
     flex-direction: column;
