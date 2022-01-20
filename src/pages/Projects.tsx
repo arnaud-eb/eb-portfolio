@@ -1,15 +1,13 @@
 import React, { useState, useRef, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
+
 import PageHero from "../components/PageHero";
 import Project from "../components/Project";
 import { projects, IProject } from "../constants";
 
-interface ProjectsProps {
-  text: string;
-  next: number;
-}
+import { PageProps } from "../types";
 
-const Projects = ({ text, next }: ProjectsProps) => {
+const Projects = ({ text, next }: PageProps) => {
   const projectRef = useRef<IProject[]>();
   const [proj, setProj] = useState(projects);
   projectRef.current = proj;

@@ -1,15 +1,13 @@
 import React from "react";
 import styled from "styled-components";
+
 import Sphere from "../components/Sphere";
 import PageHero from "../components/PageHero";
 import Bar2D from "../components/Bar2D";
 
-interface SkillsProps {
-  text: string;
-  next: number;
-}
+import { PageProps } from "../types";
 
-const Skills = ({ text, next }: SkillsProps) => {
+const Skills = ({ text, next }: PageProps) => {
   return (
     <section className="section">
       <PageHero text={text} next={next} />

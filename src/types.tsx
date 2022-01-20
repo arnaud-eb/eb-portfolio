@@ -13,3 +13,8 @@ export interface BasicAction {
 }
 
 export type ActionTypes = OpenIndexAction | TransAction | BasicAction;
+
+export interface PageProps {
+  text: string;
+  next: number;
+}

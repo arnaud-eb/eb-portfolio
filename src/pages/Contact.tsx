@@ -1,15 +1,13 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
+
 import PageHero from "../components/PageHero";
 import SocialIcons from "../components/SocialIcons";
 import styled from "styled-components";
 
-interface CountactProps {
-  text: string;
-  next: number;
-}
+import { PageProps } from "../types";
 
-const Contact = ({ text, next }: CountactProps) => {
+const Contact = ({ text, next }: PageProps) => {
   const [data, setData] = useState({ email: "", subject: "", message: "" });
   const [redirect, setRedirect] = useState(false);
 
