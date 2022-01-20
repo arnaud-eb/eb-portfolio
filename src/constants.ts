@@ -3,6 +3,15 @@ import React from "react";
 import { FaLinkedin, FaGithub, FaEnvelope } from "react-icons/fa";
 import { Home, Contact, Skills, Projects } from "./pages";
 
+export interface IProject {
+  id: number;
+  title: string;
+  img: string;
+  url: string;
+  source: string;
+  languages: string[];
+}
+
 export const links = [
   {
     id: 1,
