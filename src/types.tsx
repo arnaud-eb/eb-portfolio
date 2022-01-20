@@ -22,3 +22,7 @@ export interface PageProps {
 export interface StyledProps {
   next: number;
 }
+
+export interface IProps {
+  next: number;
+}

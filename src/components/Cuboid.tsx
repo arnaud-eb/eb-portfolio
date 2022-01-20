@@ -1,9 +1,10 @@
 import React from "react";
-import { links } from "../constants";
 
-interface CuboidProps {
+import { links } from "../constants";
+import { IProps } from "../types";
+
+interface CuboidProps extends IProps {
   current: number;
-  next: number;
   outClass: string;
   inClass: string;
   openIndex: (e: React.MouseEvent<HTMLButtonElement>) => void;

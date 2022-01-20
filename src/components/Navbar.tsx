@@ -4,10 +4,9 @@ import styled, { css } from "styled-components";
 
 import { links } from "../constants";
 
-import { StyledProps } from "../types";
+import { StyledProps, IProps } from "../types";
 
-interface NavbarProps {
-  next: number;
+interface NavbarProps extends IProps {
   openIndex: (e: React.MouseEvent<HTMLElement>) => void;
   openSidebar: (e: React.MouseEvent<HTMLElement>) => void;
 }

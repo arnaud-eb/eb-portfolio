@@ -6,12 +6,11 @@ import SocialIcons from "./SocialIcons";
 import { links } from "../constants";
 import { nextPage, prevPage } from "../utils";
 
-import { StyledProps } from "../types";
+import { StyledProps, IProps } from "../types";
 
-interface FooterProps {
+interface FooterProps extends IProps {
   moveDown: () => void;
   moveUp: () => void;
-  next: number;
 }
 
 const Footer = ({ moveDown, moveUp, next }: FooterProps) => {

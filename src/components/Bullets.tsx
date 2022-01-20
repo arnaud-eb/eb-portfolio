@@ -3,10 +3,9 @@ import styled, { css } from "styled-components";
 
 import { links } from "../constants";
 
-import { StyledProps } from "../types";
+import { StyledProps, IProps } from "../types";
 
-interface BulletsProps {
-  next: number;
+interface BulletsProps extends IProps {
   openIndex: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
