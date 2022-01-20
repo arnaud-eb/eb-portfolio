@@ -2,7 +2,16 @@ import React from "react";
 import styled, { css } from "styled-components";
 import { links } from "../constants";
 
-const PageHero = ({ text, next }) => {
+interface PageHeroProps {
+  text: string;
+  next: number;
+}
+
+interface PageHeroStyledProps {
+  next: number;
+}
+
+const PageHero = ({ text, next }: PageHeroProps) => {
   return (
     <Wrapper next={next}>
       <h3>{text}</h3>
@@ -10,7 +19,7 @@ const PageHero = ({ text, next }) => {
   );
 };
 
-const Wrapper = styled.section(
+const Wrapper = styled.section<PageHeroStyledProps>(
   ({ next }) => css`
     h3 {
       transition: var(--transition);
