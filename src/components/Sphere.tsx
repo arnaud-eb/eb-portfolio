@@ -3,11 +3,13 @@ import styled from "styled-components";
 import { texts, counts, options } from "../constants";
 
 const Sphere = () => {
-  const el = useRef();
+  const el = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
+    if (!el.current) return;
+
     let canvas = el.current;
-    let requestId;
+    let requestId: number;
 
     let width = +getComputedStyle(canvas)
       .getPropertyValue("width")
@@ -22,7 +24,12 @@ const Sphere = () => {
      * WordSphere
      * Written by Hyojun Kim in 2017. Licensed in MIT.
      */
-    function wordSphere(canvas, texts, counts, options) {
+    function wordSphere(
+      canvas: HTMLCanvasElement,
+      texts: string[],
+      counts: number[],
+      options: { [k: string]: number }
+    ) {
       const π = Math.PI;
       const {
         radius = width * 0.3,
@@ -41,6 +48,7 @@ const Sphere = () => {
 
       // canvas setup
       let ctx = canvas.getContext("2d");
+      if (!ctx) return;
       ctx.textAlign = "center";
 
       // Hi-DPI support
@@ -52,8 +60,8 @@ const Sphere = () => {
 
       // scrolling
       let clicked = false,
-        lastX,
-        lastY;
+        lastX: number,
+        lastY: number;
       canvas.addEventListener("mousedown", (event) => {
         clicked = true;
         lastX = event.screenX;
@@ -77,7 +85,7 @@ const Sphere = () => {
       canvas.addEventListener("mouseup", () => (clicked = false));
       canvas.addEventListener("mouseleave", () => (clicked = false));
 
-      function rot(x, y, t) {
+      function rot(x: number, y: number, t: number) {
         return [
           x * Math.cos(t) - y * Math.sin(t),
           x * Math.sin(t) + y * Math.cos(t),
@@ -85,6 +93,7 @@ const Sphere = () => {
       }
 
       function render() {
+        if (!ctx) return;
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
         let ix = 0,
