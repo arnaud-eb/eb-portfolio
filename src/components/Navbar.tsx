@@ -1,16 +1,15 @@
 import React from "react";
 import { FaBars } from "react-icons/fa";
 import styled, { css } from "styled-components";
+
 import { links } from "../constants";
+
+import { StyledProps } from "../types";
 
 interface NavbarProps {
   next: number;
   openIndex: (e: React.MouseEvent<HTMLElement>) => void;
   openSidebar: (e: React.MouseEvent<HTMLElement>) => void;
-}
-
-interface NavbarStyledProps {
-  next: number;
 }
 
 const Navbar = ({ next, openIndex, openSidebar }: NavbarProps) => {
@@ -39,7 +38,7 @@ const Navbar = ({ next, openIndex, openSidebar }: NavbarProps) => {
   );
 };
 
-const Wrapper = styled.nav<NavbarStyledProps>(
+const Wrapper = styled.nav<StyledProps>(
   ({ next }) => css`
     height: 4rem;
     display: flex;

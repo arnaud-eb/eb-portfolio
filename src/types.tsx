@@ -18,3 +18,7 @@ export interface PageProps {
   text: string;
   next: number;
 }
+
+export interface StyledProps {
+  next: number;
+}

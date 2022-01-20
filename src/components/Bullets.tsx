@@ -1,14 +1,13 @@
 import React from "react";
 import styled, { css } from "styled-components";
+
 import { links } from "../constants";
+
+import { StyledProps } from "../types";
 
 interface BulletsProps {
   next: number;
   openIndex: (e: React.MouseEvent<HTMLButtonElement>) => void;
-}
-
-interface BulletsStyledProps {
-  next: number;
 }
 
 const Bullets = ({ next, openIndex }: BulletsProps) => {
@@ -28,7 +27,7 @@ const Bullets = ({ next, openIndex }: BulletsProps) => {
   );
 };
 
-const Wrapper = styled.div<BulletsStyledProps>(
+const Wrapper = styled.div<StyledProps>(
   ({ next }) => css`
     position: absolute;
     top: 40%;
