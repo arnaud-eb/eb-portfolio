@@ -4,7 +4,12 @@ import PageHero from "../components/PageHero";
 import SocialIcons from "../components/SocialIcons";
 import styled from "styled-components";
 
-const Contact = ({ text, next }) => {
+interface CountactProps {
+  text: string;
+  next: number;
+}
+
+const Contact = ({ text, next }: CountactProps) => {
   const [data, setData] = useState({ email: "", subject: "", message: "" });
   const [redirect, setRedirect] = useState(false);
 
@@ -28,19 +33,21 @@ const Contact = ({ text, next }) => {
     }
   };
 
-  const handleChange = (e) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setData((prev) => {
       return { ...prev, [e.target.name]: e.target.value };
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     fetchData();
   };
 
   useEffect(() => {
-    let id;
+    let id: NodeJS.Timeout;
     if (redirect) {
       id = setTimeout(() => {
         setRedirect(false);
@@ -100,8 +107,8 @@ const Contact = ({ text, next }) => {
                 value={data.message}
                 onChange={handleChange}
                 onBlur={handleChange}
-                cols="30"
-                rows="10"
+                cols={30}
+                rows={10}
               ></textarea>
               <input
                 type="text"

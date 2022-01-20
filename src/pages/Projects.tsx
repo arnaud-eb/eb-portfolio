@@ -2,43 +2,51 @@ import React, { useState, useRef, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
 import PageHero from "../components/PageHero";
 import Project from "../components/Project";
-import { projects } from "../constants";
+import { projects, IProject } from "../constants";
 
-const Projects = ({ text, next }) => {
-  const projectRef = useRef();
+interface ProjectsProps {
+  text: string;
+  next: number;
+}
+
+const Projects = ({ text, next }: ProjectsProps) => {
+  const projectRef = useRef<IProject[]>();
   const [proj, setProj] = useState(projects);
   projectRef.current = proj;
 
   const handlePrev = () => {
+    if (!projectRef.current) return;
     const last = projectRef.current[projectRef.current.length - 1];
     const newProj = [last].concat(projectRef.current).slice(0, -1);
     setProj(newProj);
   };
 
   const handleNext = () => {
+    if (!projectRef.current) return;
     const first = projectRef.current[0];
     const newProj = projectRef.current.slice(1).concat(first);
     setProj(newProj);
   };
 
   useEffect(() => {
-    const event = window.addEventListener("keydown", (e) => {
+    const handler = (e: KeyboardEvent) => {
       if (e.code === "ArrowLeft") {
         handlePrev();
       }
       if (e.code === "ArrowRight") {
         handleNext();
       }
-    });
+    };
+    window.addEventListener("keydown", handler);
     return () => {
-      window.removeEventListener("keydown", event);
+      window.removeEventListener("keydown", handler);
     };
   }, []);
 
   return (
     <section className="section">
       <PageHero text={text} next={next} />
-      <Wrapper next={next}>
+      <Wrapper>
         {projectRef.current.map((project) => (
           <Project
             key={project.id}

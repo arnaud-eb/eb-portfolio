@@ -1,7 +1,11 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
 
-const Home = ({ openIndex }) => {
+interface HomeProps {
+  openIndex: (e: React.MouseEvent<HTMLButtonElement>) => void;
+}
+
+const Home = ({ openIndex }: HomeProps) => {
   return (
     <Wrapper>
       <div className="splash">

@@ -4,7 +4,12 @@ import Sphere from "../components/Sphere";
 import PageHero from "../components/PageHero";
 import Bar2D from "../components/Bar2D";
 
-const Skills = ({ text, next }) => {
+interface SkillsProps {
+  text: string;
+  next: number;
+}
+
+const Skills = ({ text, next }: SkillsProps) => {
   return (
     <section className="section">
       <PageHero text={text} next={next} />
