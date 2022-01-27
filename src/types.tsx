@@ -14,15 +14,10 @@ export interface BasicAction {
 
 export type ActionTypes = OpenIndexAction | TransAction | BasicAction;
 
-export interface PageProps {
-  text: string;
-  next: number;
-}
-
-export interface StyledProps {
-  next: number;
-}
-
 export interface IProps {
   next: number;
+}
+
+export interface PageProps extends IProps {
+  text: string;
 }

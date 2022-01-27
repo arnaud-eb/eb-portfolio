@@ -4,7 +4,7 @@ import styled, { css } from "styled-components";
 
 import { links } from "../constants";
 
-import { StyledProps, IProps } from "../types";
+import { IProps } from "../types";
 
 interface NavbarProps extends IProps {
   openIndex: (e: React.MouseEvent<HTMLElement>) => void;
@@ -37,7 +37,7 @@ const Navbar = ({ next, openIndex, openSidebar }: NavbarProps) => {
   );
 };
 
-const Wrapper = styled.nav<StyledProps>(
+const Wrapper = styled.nav<IProps>(
   ({ next }) => css`
     height: 4rem;
     display: flex;

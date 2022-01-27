@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 
 import { links } from "../constants";
 
-import { StyledProps, IProps } from "../types";
+import { IProps } from "../types";
 
 interface BulletsProps extends IProps {
   openIndex: (e: React.MouseEvent<HTMLButtonElement>) => void;
@@ -26,7 +26,7 @@ const Bullets = ({ next, openIndex }: BulletsProps) => {
   );
 };
 
-const Wrapper = styled.div<StyledProps>(
+const Wrapper = styled.div<IProps>(
   ({ next }) => css`
     position: absolute;
     top: 40%;

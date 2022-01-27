@@ -6,7 +6,7 @@ import SocialIcons from "./SocialIcons";
 import { links } from "../constants";
 import { nextPage, prevPage } from "../utils";
 
-import { StyledProps, IProps } from "../types";
+import { IProps } from "../types";
 
 interface FooterProps extends IProps {
   moveDown: () => void;
@@ -38,7 +38,7 @@ const Footer = ({ moveDown, moveUp, next }: FooterProps) => {
   );
 };
 
-const Wrapper = styled.footer<StyledProps>(
+const Wrapper = styled.footer<IProps>(
   ({ next }) => css`
     position: absolute;
     left: 0;

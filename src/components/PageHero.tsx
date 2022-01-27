@@ -3,11 +3,10 @@ import styled, { css } from "styled-components";
 
 import { links } from "../constants";
 
-import { StyledProps } from "../types";
+import { IProps } from "../types";
 
-interface PageHeroProps {
+interface PageHeroProps extends IProps {
   text: string;
-  next: number;
 }
 
 const PageHero = ({ text, next }: PageHeroProps) => {
@@ -18,7 +17,7 @@ const PageHero = ({ text, next }: PageHeroProps) => {
   );
 };
 
-const Wrapper = styled.section<StyledProps>(
+const Wrapper = styled.section<IProps>(
   ({ next }) => css`
     h3 {
       transition: var(--transition);

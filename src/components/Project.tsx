@@ -5,10 +5,11 @@ import { FaGithub } from "react-icons/fa";
 
 import { links, IProject } from "../constants";
 
-import { StyledProps } from "../types";
+import { IProps } from "../types";
 
-interface ProjectProps extends IProject {
-  next: number;
+type BaseProps = IProject & IProps;
+
+interface ProjectProps extends BaseProps {
   handleNext: () => void;
   handlePrev: () => void;
 }
@@ -57,7 +58,7 @@ const Project = ({
   );
 };
 
-const Wrapper = styled.article<StyledProps>(
+const Wrapper = styled.article<IProps>(
   ({ next }) => css`
     position: relative;
     grid-template-rows: auto 1fr;

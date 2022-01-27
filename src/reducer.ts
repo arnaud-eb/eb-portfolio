@@ -1,6 +1,8 @@
 import { nextPage, prevPage } from "./utils";
-import { IState } from "./App";
+import { initialState } from "./App";
 import { ActionTypes } from "./types";
+
+type IState = typeof initialState;
 
 const reducer = (state: IState, action: ActionTypes): IState => {
   switch (action.type) {

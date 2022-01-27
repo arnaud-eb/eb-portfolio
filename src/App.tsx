@@ -9,16 +9,7 @@ import reducer from "./reducer";
 
 import "./App.css";
 
-export interface IState {
-  isSidebarOpen: boolean;
-  current: number;
-  next: number;
-  outClass: string;
-  inClass: string;
-  onGoing: boolean;
-}
-
-const initialState = {
+export const initialState = {
   isSidebarOpen: false,
   current: 1,
   next: 1,
