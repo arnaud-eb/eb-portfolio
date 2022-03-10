@@ -1,19 +1,15 @@
-import React from "react";
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 import styled, { css } from "styled-components";
 
 import SocialIcons from "./SocialIcons";
 import { links } from "../constants";
 import { nextPage, prevPage } from "../utils";
+import usePortfolio from "../use-portfolio";
 
 import { IProps } from "../types";
 
-interface FooterProps extends IProps {
-  moveDown: () => void;
-  moveUp: () => void;
-}
-
-const Footer = ({ moveDown, moveUp, next }: FooterProps) => {
+const Footer = () => {
+  const { moveDown, moveUp, next } = usePortfolio();
   return (
     <Wrapper next={next}>
       <h5>&copy; {new Date().getFullYear()} arnaud depierreux</h5>

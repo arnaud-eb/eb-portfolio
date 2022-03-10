@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
 
 import PageHero from "../components/PageHero";
@@ -7,7 +7,7 @@ import { projects, IProject } from "../constants";
 
 import { PageProps } from "../types";
 
-const Projects = ({ text, next }: PageProps) => {
+const Projects = ({ text }: PageProps) => {
   const projectRef = useRef<IProject[]>();
   const [proj, setProj] = useState(projects);
   projectRef.current = proj;
@@ -43,13 +43,12 @@ const Projects = ({ text, next }: PageProps) => {
 
   return (
     <section className="section">
-      <PageHero text={text} next={next} />
+      <PageHero text={text} />
       <Wrapper>
         {projectRef.current.map((project) => (
           <Project
             key={project.id}
             {...project}
-            next={next}
             handleNext={handleNext}
             handlePrev={handlePrev}
           />

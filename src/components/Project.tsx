@@ -1,30 +1,27 @@
-import React from "react";
 import styled, { css } from "styled-components";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { FaGithub } from "react-icons/fa";
 
 import { links, IProject } from "../constants";
+import usePortfolio from "../use-portfolio";
 
 import { IProps } from "../types";
 
-type BaseProps = IProject & IProps;
-
-interface ProjectProps extends BaseProps {
+interface ProjectProps extends IProject {
   handleNext: () => void;
   handlePrev: () => void;
 }
 
 const Project = ({
-  id,
   title,
   img,
   url,
   source,
   languages,
-  next,
   handleNext,
   handlePrev,
 }: ProjectProps) => {
+  const { next } = usePortfolio();
   return (
     <Wrapper next={next}>
       <div>

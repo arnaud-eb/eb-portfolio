@@ -1,22 +1,13 @@
-import React, { useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import styled from "styled-components";
-import SocialIcons from "./SocialIcons";
-import { links } from "../constants";
 import { FaTimes } from "react-icons/fa";
 
-interface SideBarProps {
-  next: number;
-  isSidebarOpen: boolean;
-  closeSidebar: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  openIndex: (e: React.MouseEvent<HTMLElement>) => void;
-}
+import SocialIcons from "./SocialIcons";
+import { links } from "../constants";
+import usePortfolio from "../use-portfolio";
 
-const Sidebar = ({
-  next,
-  isSidebarOpen,
-  closeSidebar,
-  openIndex,
-}: SideBarProps) => {
+const Sidebar = () => {
+  const { next, isSidebarOpen, closeSidebar, handleOpenIndex } = usePortfolio();
   const el = useRef<HTMLElement | null>(null);
 
   const keyDownHandler = (e: KeyboardEvent) => {
@@ -53,7 +44,7 @@ const Sidebar = ({
         <div>
           <h3
             data-idx={1}
-            onClick={openIndex}
+            onClick={handleOpenIndex}
             style={next === 1 ? { cursor: "default" } : { cursor: "pointer" }}
             tabIndex={0}
           >
@@ -66,7 +57,7 @@ const Sidebar = ({
         <ul className="links">
           {links.map(({ id, text }) => (
             <li key={id} className={`${next === id ? "active" : ""}`}>
-              <button type="button" data-idx={id} onClick={openIndex}>
+              <button type="button" data-idx={id} onClick={handleOpenIndex}>
                 {text}
               </button>
             </li>

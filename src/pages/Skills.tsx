@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 
 import Sphere from "../components/Sphere";
@@ -7,10 +6,10 @@ import Bar2D from "../components/Bar2D";
 
 import { PageProps } from "../types";
 
-const Skills = ({ text, next }: PageProps) => {
+const Skills = ({ text }: PageProps) => {
   return (
     <section className="section">
-      <PageHero text={text} next={next} />
+      <PageHero text={text} />
       <Wrapper>
         <article className="skills-bar">
           <p>

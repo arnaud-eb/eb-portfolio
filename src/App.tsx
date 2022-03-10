@@ -1,12 +1,12 @@
-import React, { useEffect, useReducer } from "react";
+import { useEffect } from "react";
 
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
 import Cuboid from "./components/Cuboid";
 import Bullets from "./components/Bullets";
 import Footer from "./components/Footer";
-import reducer from "./reducer";
 
+import usePortfolio from "./use-portfolio";
 import "./App.css";
 
 export const initialState = {
@@ -19,47 +19,16 @@ export const initialState = {
 };
 
 function App() {
-  const [state, dispatch] = useReducer(reducer, initialState);
-
-  const openIndex = (e: React.MouseEvent<HTMLElement>) => {
-    if (!(e.target instanceof HTMLElement)) {
-      return;
-    }
-    if (e.target.dataset.idx) {
-      dispatch({ type: "OPEN_INDEX", payload: +e.target.dataset.idx });
-    }
-  };
-
-  const moveUp = () => {
-    dispatch({
-      type: "TRANS",
-      payload: { direction: "up" },
-    });
-  };
-
-  const moveDown = () => {
-    dispatch({
-      type: "TRANS",
-      payload: { direction: "down" },
-    });
-  };
-
-  const openSidebar = () => {
-    dispatch({ type: "SIDEBAR_OPEN" });
-  };
-
-  const closeSidebar = () => {
-    dispatch({ type: "SIDEBAR_CLOSE" });
-  };
+  const { reset, moveUp, moveDown, next } = usePortfolio();
 
   useEffect(() => {
     const id = setTimeout(() => {
-      dispatch({ type: "RESET" });
+      reset();
     }, 600);
     return () => {
       clearTimeout(id);
     };
-  }, [state.next]);
+  }, [next]);
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
@@ -91,22 +60,13 @@ function App() {
     };
   }, []);
 
-  const value = {
-    ...state,
-    openIndex,
-    moveUp,
-    moveDown,
-    openSidebar,
-    closeSidebar,
-  };
-
   return (
     <>
-      <Navbar {...value} />
-      <Sidebar {...value} />
-      <Cuboid {...value} />
-      <Bullets {...value} />
-      <Footer {...value} />
+      <Navbar />
+      <Sidebar />
+      <Cuboid />
+      <Bullets />
+      <Footer />
     </>
   );
 }

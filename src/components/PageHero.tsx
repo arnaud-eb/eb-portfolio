@@ -1,15 +1,12 @@
-import React from "react";
 import styled, { css } from "styled-components";
 
 import { links } from "../constants";
+import usePortfolio from "../use-portfolio";
 
-import { IProps } from "../types";
+import { PageProps, IProps } from "../types";
 
-interface PageHeroProps extends IProps {
-  text: string;
-}
-
-const PageHero = ({ text, next }: PageHeroProps) => {
+const PageHero = ({ text }: PageProps) => {
+  const { next } = usePortfolio();
   return (
     <Wrapper next={next}>
       <h3>{text}</h3>

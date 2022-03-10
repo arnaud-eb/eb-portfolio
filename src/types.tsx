@@ -3,21 +3,16 @@ export interface OpenIndexAction {
   payload: number;
 }
 
-export interface TransAction {
-  type: "TRANS";
-  payload: { direction: "up" | "down" };
-}
-
 export interface BasicAction {
-  type: "RESET" | "SIDEBAR_OPEN" | "SIDEBAR_CLOSE";
+  type: "RESET" | "SIDEBAR_OPEN" | "SIDEBAR_CLOSE" | "MOVE_UP" | "MOVE_DOWN";
 }
 
-export type ActionTypes = OpenIndexAction | TransAction | BasicAction;
+export type ActionTypes = OpenIndexAction | BasicAction;
 
 export interface IProps {
   next: number;
 }
 
-export interface PageProps extends IProps {
+export interface PageProps {
   text: string;
 }

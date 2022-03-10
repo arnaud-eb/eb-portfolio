@@ -7,7 +7,7 @@ import styled from "styled-components";
 
 import { PageProps } from "../types";
 
-const Contact = ({ text, next }: PageProps) => {
+const Contact = ({ text }: PageProps) => {
   const [data, setData] = useState({ email: "", subject: "", message: "" });
   const [redirect, setRedirect] = useState(false);
 
@@ -58,7 +58,7 @@ const Contact = ({ text, next }: PageProps) => {
 
   return (
     <section className="section">
-      <PageHero text={text} next={next} />
+      <PageHero text={text} />
       <Wrapper>
         <article>
           <p>

@@ -1,22 +1,8 @@
-import React from "react";
-
 import { links } from "../constants";
-import { IProps } from "../types";
+import usePortfolio from "../use-portfolio";
 
-interface CuboidProps extends IProps {
-  current: number;
-  outClass: string;
-  inClass: string;
-  openIndex: (e: React.MouseEvent<HTMLButtonElement>) => void;
-}
-
-const Cuboid = ({
-  current,
-  next,
-  outClass,
-  inClass,
-  openIndex,
-}: CuboidProps) => {
+const Cuboid = () => {
+  const { current, next, outClass, inClass } = usePortfolio();
   return (
     <div className="cuboid">
       {links.map(({ id, Component, colors, text }) => {
@@ -30,7 +16,7 @@ const Cuboid = ({
             }`}
             style={{ backgroundColor: colors[0] }}
           >
-            <Component text={text} openIndex={openIndex} next={next} />
+            <Component text={text} />
           </div>
         );
       })}

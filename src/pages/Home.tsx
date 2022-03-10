@@ -1,11 +1,9 @@
-import React from "react";
 import styled, { keyframes } from "styled-components";
 
-interface HomeProps {
-  openIndex: (e: React.MouseEvent<HTMLButtonElement>) => void;
-}
+import usePortfolio from "../use-portfolio";
 
-const Home = ({ openIndex }: HomeProps) => {
+const Home = () => {
+  const { handleOpenIndex } = usePortfolio();
   return (
     <Wrapper>
       <div className="splash">
@@ -29,7 +27,7 @@ const Home = ({ openIndex }: HomeProps) => {
           as I learn new things, fail spectacularly <br />
           and make cool stuff along the way.
         </h2>
-        <button type="button" data-idx={2} onClick={openIndex}>
+        <button type="button" data-idx={2} onClick={handleOpenIndex}>
           More
         </button>
       </div>

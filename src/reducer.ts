@@ -1,10 +1,16 @@
 import { nextPage, prevPage } from "./utils";
-import { initialState } from "./App";
 import { ActionTypes } from "./types";
 
-type IState = typeof initialState;
+export const initialState = {
+  isSidebarOpen: false,
+  current: 1,
+  next: 1,
+  outClass: "",
+  inClass: "",
+  onGoing: false,
+};
 
-const reducer = (state: IState, action: ActionTypes): IState => {
+const reducer = (state = initialState, action: ActionTypes) => {
   switch (action.type) {
     case "OPEN_INDEX":
       if (!state.onGoing && state.next !== action.payload) {
@@ -24,27 +30,28 @@ const reducer = (state: IState, action: ActionTypes): IState => {
         };
       }
       return state;
-    case "TRANS":
+    case "MOVE_UP":
       if (!state.onGoing) {
-        if (action.payload.direction === "up") {
-          return {
-            ...state,
-            isSidebarOpen: false,
-            onGoing: true,
-            next: prevPage(state.current),
-            outClass: "rotateCubeBottomOut",
-            inClass: "rotateCubeBottomIn",
-          };
-        } else {
-          return {
-            ...state,
-            isSidebarOpen: false,
-            onGoing: true,
-            next: nextPage(state.current),
-            outClass: "rotateCubeTopOut",
-            inClass: "rotateCubeTopIn",
-          };
-        }
+        return {
+          ...state,
+          isSidebarOpen: false,
+          onGoing: true,
+          next: prevPage(state.current),
+          outClass: "rotateCubeBottomOut",
+          inClass: "rotateCubeBottomIn",
+        };
+      }
+      return state;
+    case "MOVE_DOWN":
+      if (!state.onGoing) {
+        return {
+          ...state,
+          isSidebarOpen: false,
+          onGoing: true,
+          next: nextPage(state.current),
+          outClass: "rotateCubeTopOut",
+          inClass: "rotateCubeTopIn",
+        };
       }
       return state;
     case "RESET":

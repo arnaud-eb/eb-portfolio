@@ -1,22 +1,19 @@
-import React from "react";
 import styled, { css } from "styled-components";
 
 import { links } from "../constants";
+import usePortfolio from "../use-portfolio";
 
 import { IProps } from "../types";
 
-interface BulletsProps extends IProps {
-  openIndex: (e: React.MouseEvent<HTMLButtonElement>) => void;
-}
-
-const Bullets = ({ next, openIndex }: BulletsProps) => {
+const Bullets = () => {
+  const { next, handleOpenIndex } = usePortfolio();
   return (
     <Wrapper next={next}>
       {links.map(({ id, text }) => (
         <button
           type="button"
           data-idx={id}
-          onClick={openIndex}
+          onClick={handleOpenIndex}
           key={id}
           className={`${next === id ? "active" : ""}`}
           aria-label={text}
