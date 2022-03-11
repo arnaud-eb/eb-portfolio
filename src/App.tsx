@@ -19,46 +19,47 @@ export const initialState = {
 };
 
 function App() {
-  const { reset, moveUp, moveDown, next } = usePortfolio();
+  const { dispatchedReset, dispatchedMoveUp, dispatchedMoveDown, next } =
+    usePortfolio();
 
   useEffect(() => {
     const id = setTimeout(() => {
-      reset();
+      dispatchedReset();
     }, 600);
     return () => {
       clearTimeout(id);
     };
-  }, [next]);
+  }, [next, dispatchedReset]);
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       if (e.code === "ArrowUp") {
-        moveUp();
+        dispatchedMoveUp();
       }
       if (e.code === "ArrowDown") {
-        moveDown();
+        dispatchedMoveDown();
       }
     };
     window.addEventListener("keydown", handler);
     return () => {
       window.removeEventListener("keydown", handler);
     };
-  }, []);
+  }, [dispatchedMoveUp, dispatchedMoveDown]);
 
   useEffect(() => {
     const handler = (e: WheelEvent) => {
       if (e.deltaY < 0) {
-        moveUp();
+        dispatchedMoveUp();
       }
       if (e.deltaY > 0) {
-        moveDown();
+        dispatchedMoveDown();
       }
     };
     window.addEventListener("wheel", handler);
     return () => {
       window.removeEventListener("wheel", handler);
     };
-  }, []);
+  }, [dispatchedMoveUp, dispatchedMoveDown]);
 
   return (
     <>

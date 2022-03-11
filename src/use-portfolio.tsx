@@ -1,3 +1,4 @@
+import { useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
 
@@ -19,7 +20,20 @@ const usePortfolio = () => {
       dispatchedActions.openIndex(+e.target.dataset.idx);
     }
   };
-  return { ...state, ...dispatchedActions, handleOpenIndex };
+  /* eslint-disable */
+  const dispatchedReset = useCallback(dispatchedActions.reset, []);
+  const dispatchedMoveUp = useCallback(dispatchedActions.moveUp, []);
+  const dispatchedMoveDown = useCallback(dispatchedActions.moveDown, []);
+  /* eslint-enable */
+
+  return {
+    ...state,
+    ...dispatchedActions,
+    handleOpenIndex,
+    dispatchedReset,
+    dispatchedMoveUp,
+    dispatchedMoveDown,
+  };
 };
 
 export default usePortfolio;

@@ -9,21 +9,21 @@ import usePortfolio from "../use-portfolio";
 import { IProps } from "../types";
 
 const Footer = () => {
-  const { moveDown, moveUp, next } = usePortfolio();
+  const { dispatchedMoveDown, dispatchedMoveUp, next } = usePortfolio();
   return (
     <Wrapper next={next}>
       <h5>&copy; {new Date().getFullYear()} arnaud depierreux</h5>
       <div className="btn-container">
         <button
           className="up-arrow"
-          onClick={moveUp}
+          onClick={dispatchedMoveUp}
           aria-label={links[prevPage(next) - 1].text}
         >
           <IoIosArrowUp />
         </button>
         <button
           className="down-arrow"
-          onClick={moveDown}
+          onClick={dispatchedMoveDown}
           aria-label={links[nextPage(next) - 1].text}
         >
           <IoIosArrowDown />
