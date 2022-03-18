@@ -1,5 +1,5 @@
 import { links } from "../constants";
-import usePortfolio from "../use-portfolio";
+import usePortfolio from "../store/use-portfolio";
 
 const Cuboid = () => {
   const { current, next, outClass, inClass } = usePortfolio();

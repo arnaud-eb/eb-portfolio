@@ -3,7 +3,7 @@ import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { FaGithub } from "react-icons/fa";
 
 import { links, IProject } from "../constants";
-import usePortfolio from "../use-portfolio";
+import usePortfolio from "../store/use-portfolio";
 
 import { IProps } from "../types";
 

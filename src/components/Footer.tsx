@@ -4,7 +4,7 @@ import styled, { css } from "styled-components";
 import SocialIcons from "./SocialIcons";
 import { links } from "../constants";
 import { nextPage, prevPage } from "../utils";
-import usePortfolio from "../use-portfolio";
+import usePortfolio from "../store/use-portfolio";
 
 import { IProps } from "../types";
 

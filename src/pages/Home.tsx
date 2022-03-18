@@ -1,6 +1,6 @@
 import styled, { keyframes } from "styled-components";
 
-import usePortfolio from "../use-portfolio";
+import usePortfolio from "../store/use-portfolio";
 
 const Home = () => {
   const { handleOpenIndex } = usePortfolio();

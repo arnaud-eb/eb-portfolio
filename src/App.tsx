@@ -6,17 +6,7 @@ import Cuboid from "./components/Cuboid";
 import Bullets from "./components/Bullets";
 import Footer from "./components/Footer";
 
-import usePortfolio from "./use-portfolio";
-import "./App.css";
-
-export const initialState = {
-  isSidebarOpen: false,
-  current: 1,
-  next: 1,
-  outClass: "",
-  inClass: "",
-  onGoing: false,
-};
+import usePortfolio from "./store/use-portfolio";
 
 function App() {
   const { dispatchedReset, dispatchedMoveUp, dispatchedMoveDown, next } =

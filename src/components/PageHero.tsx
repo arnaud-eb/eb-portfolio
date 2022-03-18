@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 
 import { links } from "../constants";
-import usePortfolio from "../use-portfolio";
+import usePortfolio from "../store/use-portfolio";
 
 import { PageProps, IProps } from "../types";
 

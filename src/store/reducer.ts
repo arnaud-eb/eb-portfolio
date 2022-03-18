@@ -1,5 +1,5 @@
-import { nextPage, prevPage } from "./utils";
-import { ActionTypes } from "./types";
+import { nextPage, prevPage } from "../utils";
+import { ActionTypes } from "../types";
 
 export const initialState = {
   isSidebarOpen: false,

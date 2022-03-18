@@ -4,7 +4,7 @@ import { FaTimes } from "react-icons/fa";
 
 import SocialIcons from "./SocialIcons";
 import { links } from "../constants";
-import usePortfolio from "../use-portfolio";
+import usePortfolio from "../store/use-portfolio";
 
 const Sidebar = () => {
   const { next, isSidebarOpen, closeSidebar, handleOpenIndex } = usePortfolio();
