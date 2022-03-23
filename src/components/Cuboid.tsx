@@ -1,8 +1,13 @@
 import { links } from "../constants";
-import usePortfolio from "../store/use-portfolio";
 
-const Cuboid = () => {
-  const { current, next, outClass, inClass } = usePortfolio();
+import { IState } from "../types";
+
+type CuboidPropsType = Pick<
+  IState,
+  "current" | "next" | "outClass" | "inClass"
+>;
+
+const Cuboid = ({ current, next, outClass, inClass }: CuboidPropsType) => {
   return (
     <div className="cuboid">
       {links.map(({ id, Component, colors, text }) => {

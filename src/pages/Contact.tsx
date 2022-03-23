@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 
-import PageHero from "../components/PageHero";
+import PageHeroContainer from "../containers/PageHeroContainer";
 import SocialIcons from "../components/SocialIcons";
 import styled from "styled-components";
 
@@ -58,7 +58,7 @@ const Contact = ({ text }: PageProps) => {
 
   return (
     <section className="section">
-      <PageHero text={text} />
+      <PageHeroContainer text={text} />
       <Wrapper>
         <article>
           <p>

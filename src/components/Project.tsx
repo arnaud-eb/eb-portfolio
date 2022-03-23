@@ -3,14 +3,14 @@ import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { FaGithub } from "react-icons/fa";
 
 import { links, IProject } from "../constants";
-import usePortfolio from "../store/use-portfolio";
 
 import { IProps } from "../types";
 
-interface ProjectProps extends IProject {
-  handleNext: () => void;
-  handlePrev: () => void;
-}
+type ProjectProps = IProject &
+  IProps & {
+    handleNext: () => void;
+    handlePrev: () => void;
+  };
 
 const Project = ({
   title,
@@ -20,8 +20,8 @@ const Project = ({
   languages,
   handleNext,
   handlePrev,
+  next,
 }: ProjectProps) => {
-  const { next } = usePortfolio();
   return (
     <Wrapper next={next}>
       <div>

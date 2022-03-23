@@ -4,10 +4,19 @@ import { FaTimes } from "react-icons/fa";
 
 import SocialIcons from "./SocialIcons";
 import { links } from "../constants";
-import usePortfolio from "../store/use-portfolio";
+import { IState } from "../types";
 
-const Sidebar = () => {
-  const { next, isSidebarOpen, closeSidebar, handleOpenIndex } = usePortfolio();
+type SidebarPropsType = Pick<IState, "next" | "isSidebarOpen"> & {
+  closeSidebar: () => void;
+  openIndex: (e: React.MouseEvent<HTMLElement, MouseEvent>) => void;
+};
+
+const Sidebar = ({
+  next,
+  isSidebarOpen,
+  closeSidebar,
+  openIndex,
+}: SidebarPropsType) => {
   const el = useRef<HTMLElement | null>(null);
 
   const keyDownHandler = (e: KeyboardEvent) => {
@@ -44,7 +53,7 @@ const Sidebar = () => {
         <div>
           <h3
             data-idx={1}
-            onClick={handleOpenIndex}
+            onClick={openIndex}
             style={next === 1 ? { cursor: "default" } : { cursor: "pointer" }}
             tabIndex={0}
           >
@@ -57,7 +66,7 @@ const Sidebar = () => {
         <ul className="links">
           {links.map(({ id, text }) => (
             <li key={id} className={`${next === id ? "active" : ""}`}>
-              <button type="button" data-idx={id} onClick={handleOpenIndex}>
+              <button type="button" data-idx={id} onClick={openIndex}>
                 {text}
               </button>
             </li>

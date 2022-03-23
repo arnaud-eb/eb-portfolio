@@ -1,12 +1,10 @@
 import styled, { css } from "styled-components";
 
 import { links } from "../constants";
-import usePortfolio from "../store/use-portfolio";
 
 import { PageProps, IProps } from "../types";
 
-const PageHero = ({ text }: PageProps) => {
-  const { next } = usePortfolio();
+const PageHero = ({ text, next }: PageProps & IProps) => {
   return (
     <Wrapper next={next}>
       <h3>{text}</h3>

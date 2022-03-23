@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 import Sphere from "../components/Sphere";
-import PageHero from "../components/PageHero";
+import PageHeroContainer from "../containers/PageHeroContainer";
 import Bar2D from "../components/Bar2D";
 
 import { PageProps } from "../types";
@@ -9,7 +9,7 @@ import { PageProps } from "../types";
 const Skills = ({ text }: PageProps) => {
   return (
     <section className="section">
-      <PageHero text={text} />
+      <PageHeroContainer text={text} />
       <Wrapper>
         <article className="skills-bar">
           <p>

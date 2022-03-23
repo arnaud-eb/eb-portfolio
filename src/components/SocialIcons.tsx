@@ -1,4 +1,3 @@
-import React from "react";
 import { social } from "../constants";
 
 const SocialIcons = () => {

@@ -1,63 +1,68 @@
 import { useEffect } from "react";
 
-import Navbar from "./components/Navbar";
-import Sidebar from "./components/Sidebar";
-import Cuboid from "./components/Cuboid";
-import Bullets from "./components/Bullets";
-import Footer from "./components/Footer";
+import {
+  NavbarContainer,
+  SidebarContainer,
+  CuboidContainer,
+  BulletsContainer,
+  FooterContainer,
+} from "../containers";
 
-import usePortfolio from "./store/use-portfolio";
+import { IState } from "../types";
 
-function App() {
-  const { dispatchedReset, dispatchedMoveUp, dispatchedMoveDown, next } =
-    usePortfolio();
+type AppPropsType = Pick<IState, "next"> & {
+  reset: () => void;
+  moveUp: () => void;
+  moveDown: () => void;
+};
 
+function App({ reset, moveUp, moveDown, next }: AppPropsType) {
   useEffect(() => {
     const id = setTimeout(() => {
-      dispatchedReset();
+      reset();
     }, 600);
     return () => {
       clearTimeout(id);
     };
-  }, [next, dispatchedReset]);
+  }, [next]);
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       if (e.code === "ArrowUp") {
-        dispatchedMoveUp();
+        moveUp();
       }
       if (e.code === "ArrowDown") {
-        dispatchedMoveDown();
+        moveDown();
       }
     };
     window.addEventListener("keydown", handler);
     return () => {
       window.removeEventListener("keydown", handler);
     };
-  }, [dispatchedMoveUp, dispatchedMoveDown]);
+  }, []);
 
   useEffect(() => {
     const handler = (e: WheelEvent) => {
       if (e.deltaY < 0) {
-        dispatchedMoveUp();
+        moveUp();
       }
       if (e.deltaY > 0) {
-        dispatchedMoveDown();
+        moveDown();
       }
     };
     window.addEventListener("wheel", handler);
     return () => {
       window.removeEventListener("wheel", handler);
     };
-  }, [dispatchedMoveUp, dispatchedMoveDown]);
+  }, []);
 
   return (
     <>
-      <Navbar />
-      <Sidebar />
-      <Cuboid />
-      <Bullets />
-      <Footer />
+      <NavbarContainer />
+      <SidebarContainer />
+      <CuboidContainer />
+      <BulletsContainer />
+      <FooterContainer />
     </>
   );
 }

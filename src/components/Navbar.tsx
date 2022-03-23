@@ -1,22 +1,22 @@
+import React from "react";
 import { FaBars } from "react-icons/fa";
 import styled, { css } from "styled-components";
 
 import { links } from "../constants";
-import usePortfolio from "../store/use-portfolio";
 
-import { IProps } from "../types";
+import { IState } from "../types";
 
-const Navbar = () => {
-  const { next, handleOpenIndex, openSidebar } = usePortfolio();
+type NavbarPropsType = Pick<IState, "next"> & {
+  openIndex: (e: React.MouseEvent<HTMLElement, MouseEvent>) => void;
+  openSidebar: () => void;
+};
+
+const Navbar = ({ next, openIndex, openSidebar }: NavbarPropsType) => {
   return (
     <Wrapper next={next}>
       <div className="nav-center">
         <div className="nav-header">
-          <h3
-            data-idx={1}
-            onClick={handleOpenIndex}
-            data-text="arnaud depierreux"
-          >
+          <h3 data-idx={1} onClick={openIndex} data-text="arnaud depierreux">
             eb
           </h3>
           <button className="toggle-btn" onClick={openSidebar}>
@@ -26,7 +26,7 @@ const Navbar = () => {
         <ul className="nav-links">
           {links.map(({ id, text }) => (
             <li key={id} className={`${next === id ? "active" : ""}`}>
-              <button type="button" data-idx={id} onClick={handleOpenIndex}>
+              <button type="button" data-idx={id} onClick={openIndex}>
                 {text}
               </button>
             </li>
@@ -37,7 +37,7 @@ const Navbar = () => {
   );
 };
 
-const Wrapper = styled.nav<IProps>(
+const Wrapper = styled.nav<Pick<IState, "next">>(
   ({ next }) => css`
     height: 4rem;
     display: flex;

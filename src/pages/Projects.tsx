@@ -1,8 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
 
-import PageHero from "../components/PageHero";
-import Project from "../components/Project";
+import { PageHeroContainer, ProjectContainer } from "../containers";
 import { projects, IProject } from "../constants";
 
 import { PageProps } from "../types";
@@ -43,10 +42,10 @@ const Projects = ({ text }: PageProps) => {
 
   return (
     <section className="section">
-      <PageHero text={text} />
+      <PageHeroContainer text={text} />
       <Wrapper>
         {projectRef.current.map((project) => (
-          <Project
+          <ProjectContainer
             key={project.id}
             {...project}
             handleNext={handleNext}

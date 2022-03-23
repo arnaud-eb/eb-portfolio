@@ -1,13 +1,18 @@
-const openIndex = (index: number) => ({ type: "OPEN_INDEX", payload: index });
+import { BasicAction, OpenIndexAction } from "../types";
 
-const moveUp = () => ({ type: "MOVE_UP" });
+const openIndex = (index: number): OpenIndexAction => ({
+  type: "OPEN_INDEX",
+  payload: index,
+});
 
-const moveDown = () => ({ type: "MOVE_DOWN" });
+const moveUp = (): BasicAction => ({ type: "MOVE_UP" });
 
-const openSidebar = () => ({ type: "SIDEBAR_OPEN" });
+const moveDown = (): BasicAction => ({ type: "MOVE_DOWN" });
 
-const closeSidebar = () => ({ type: "SIDEBAR_CLOSE" });
+const openSidebar = (): BasicAction => ({ type: "SIDEBAR_OPEN" });
 
-const reset = () => ({ type: "RESET" });
+const closeSidebar = (): BasicAction => ({ type: "SIDEBAR_CLOSE" });
+
+const reset = (): BasicAction => ({ type: "RESET" });
 
 export { openIndex, moveUp, moveDown, openSidebar, closeSidebar, reset };

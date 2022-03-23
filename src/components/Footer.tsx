@@ -4,26 +4,29 @@ import styled, { css } from "styled-components";
 import SocialIcons from "./SocialIcons";
 import { links } from "../constants";
 import { nextPage, prevPage } from "../utils";
-import usePortfolio from "../store/use-portfolio";
 
 import { IProps } from "../types";
 
-const Footer = () => {
-  const { dispatchedMoveDown, dispatchedMoveUp, next } = usePortfolio();
+type FooterPropsType = IProps & {
+  moveDown: () => void;
+  moveUp: () => void;
+};
+
+const Footer = ({ moveDown, moveUp, next }: FooterPropsType) => {
   return (
     <Wrapper next={next}>
       <h5>&copy; {new Date().getFullYear()} arnaud depierreux</h5>
       <div className="btn-container">
         <button
           className="up-arrow"
-          onClick={dispatchedMoveUp}
+          onClick={moveUp}
           aria-label={links[prevPage(next) - 1].text}
         >
           <IoIosArrowUp />
         </button>
         <button
           className="down-arrow"
-          onClick={dispatchedMoveDown}
+          onClick={moveDown}
           aria-label={links[nextPage(next) - 1].text}
         >
           <IoIosArrowDown />

@@ -1,3 +1,7 @@
+import { initialState } from "./store/reducer";
+
+export type IState = typeof initialState;
+
 export interface OpenIndexAction {
   type: "OPEN_INDEX";
   payload: number;

@@ -1,13 +1,24 @@
 // eslint-disable-next-line
-import React from "react";
 import { FaLinkedin, FaGithub, FaEnvelope } from "react-icons/fa";
-import { Home, Contact, Skills, Projects } from "./pages";
+import HomeContainer from "./containers/HomeContainer";
+import { Projects, Skills, Contact } from "./pages";
 
-export const links = [
+type LinksType = {
+  id: number;
+  text: string;
+  Component:
+    | typeof HomeContainer
+    | typeof Projects
+    | typeof Skills
+    | typeof Contact;
+  colors: string[];
+}[];
+
+export const links: LinksType = [
   {
     id: 1,
     text: "home",
-    Component: Home,
+    Component: HomeContainer,
     colors: ["#97c0c4", "#944c63"],
   },
   {
