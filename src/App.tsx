@@ -6,9 +6,8 @@ import Cuboid from "./components/Cuboid";
 import Bullets from "./components/Bullets";
 import Footer from "./components/Footer";
 
-import usePortfolio from "./use-portfolio";
-import { useAppSelector } from "./store/hooks";
-import { selectCuboid } from "./store/cuboidSlice";
+import { useAppDispatch, useAppSelector } from "./store/hooks";
+import { selectCuboid, reset, moveUp, moveDown } from "./store/cuboidSlice";
 
 import "./App.css";
 
@@ -22,48 +21,47 @@ export const initialState = {
 };
 
 function App() {
-  const { dispatchedReset, dispatchedMoveUp, dispatchedMoveDown } =
-    usePortfolio();
   const { next } = useAppSelector(selectCuboid);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     const id = setTimeout(() => {
-      dispatchedReset();
+      dispatch(reset());
     }, 600);
     return () => {
       clearTimeout(id);
     };
-  }, [next, dispatchedReset]);
+  }, [next, dispatch]);
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       if (e.code === "ArrowUp") {
-        dispatchedMoveUp();
+        dispatch(moveUp());
       }
       if (e.code === "ArrowDown") {
-        dispatchedMoveDown();
+        dispatch(moveDown());
       }
     };
     window.addEventListener("keydown", handler);
     return () => {
       window.removeEventListener("keydown", handler);
     };
-  }, [dispatchedMoveUp, dispatchedMoveDown]);
+  }, [dispatch]);
 
   useEffect(() => {
     const handler = (e: WheelEvent) => {
       if (e.deltaY < 0) {
-        dispatchedMoveUp();
+        dispatch(moveUp());
       }
       if (e.deltaY > 0) {
-        dispatchedMoveDown();
+        dispatch(moveDown());
       }
     };
     window.addEventListener("wheel", handler);
     return () => {
       window.removeEventListener("wheel", handler);
     };
-  }, [dispatchedMoveUp, dispatchedMoveDown]);
+  }, [dispatch]);
 
   return (
     <>

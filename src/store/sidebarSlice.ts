@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 import { RootState } from ".";
+import { moveDown, moveUp, openIndex } from "./cuboidSlice";
 
 interface SidebarState {
   isSidebarOpen: boolean;
@@ -20,6 +21,18 @@ export const sidebarSlice = createSlice({
     closeSidebar: (state) => {
       state.isSidebarOpen = false;
     },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(moveUp, (state) => {
+        state.isSidebarOpen = false;
+      })
+      .addCase(moveDown, (state) => {
+        state.isSidebarOpen = false;
+      })
+      .addCase(openIndex, (state) => {
+        state.isSidebarOpen = false;
+      });
   },
 });
 

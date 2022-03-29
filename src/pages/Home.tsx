@@ -1,9 +1,10 @@
 import styled, { keyframes } from "styled-components";
 
-import usePortfolio from "../use-portfolio";
+import { openIndex } from "../store/cuboidSlice";
+import { useAppDispatch } from "../store/hooks";
 
 const Home = () => {
-  const { handleOpenIndex } = usePortfolio();
+  const dispatch = useAppDispatch();
   return (
     <Wrapper>
       <div className="splash">
@@ -27,7 +28,13 @@ const Home = () => {
           as I learn new things, fail spectacularly <br />
           and make cool stuff along the way.
         </h2>
-        <button type="button" data-idx={2} onClick={handleOpenIndex}>
+        <button
+          type="button"
+          data-idx={2}
+          onClick={(e) =>
+            dispatch(openIndex(+(e.target as HTMLElement).dataset.idx!))
+          }
+        >
           More
         </button>
       </div>

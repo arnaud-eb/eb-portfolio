@@ -2,9 +2,8 @@ import { FaBars } from "react-icons/fa";
 import styled, { css } from "styled-components";
 
 import { links } from "../constants";
-import usePortfolio from "../use-portfolio";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
-import { selectCuboid } from "../store/cuboidSlice";
+import { openIndex, selectCuboid } from "../store/cuboidSlice";
 import { openSidebar } from "../store/sidebarSlice";
 
 import { IProps } from "../types";
@@ -12,14 +11,15 @@ import { IProps } from "../types";
 const Navbar = () => {
   const { next } = useAppSelector(selectCuboid);
   const dispatch = useAppDispatch();
-  const { handleOpenIndex } = usePortfolio();
   return (
     <Wrapper next={next}>
       <div className="nav-center">
         <div className="nav-header">
           <h3
             data-idx={1}
-            onClick={handleOpenIndex}
+            onClick={(e) =>
+              dispatch(openIndex(+(e.target as HTMLElement).dataset.idx!))
+            }
             data-text="arnaud depierreux"
           >
             eb
@@ -34,7 +34,13 @@ const Navbar = () => {
         <ul className="nav-links">
           {links.map(({ id, text }) => (
             <li key={id} className={`${next === id ? "active" : ""}`}>
-              <button type="button" data-idx={id} onClick={handleOpenIndex}>
+              <button
+                type="button"
+                data-idx={id}
+                onClick={(e) =>
+                  dispatch(openIndex(+(e.target as HTMLElement).dataset.idx!))
+                }
+              >
                 {text}
               </button>
             </li>

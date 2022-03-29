@@ -4,17 +4,14 @@ import { FaTimes } from "react-icons/fa";
 
 import SocialIcons from "./SocialIcons";
 import { links } from "../constants";
-import usePortfolio from "../use-portfolio";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
-import { selectCuboid } from "../store/cuboidSlice";
+import { openIndex, selectCuboid } from "../store/cuboidSlice";
 import { selectSidebar, closeSidebar } from "../store/sidebarSlice";
 
 const Sidebar = () => {
   const { next } = useAppSelector(selectCuboid);
   const isSidebarOpen = useAppSelector(selectSidebar);
-
   const dispatch = useAppDispatch();
-  const { handleOpenIndex } = usePortfolio();
   const el = useRef<HTMLElement | null>(null);
 
   const keyDownHandler = (e: KeyboardEvent) => {
@@ -51,7 +48,9 @@ const Sidebar = () => {
         <div>
           <h3
             data-idx={1}
-            onClick={handleOpenIndex}
+            onClick={(e) =>
+              dispatch(openIndex(+(e.target as HTMLElement).dataset.idx!))
+            }
             style={next === 1 ? { cursor: "default" } : { cursor: "pointer" }}
             tabIndex={0}
           >
@@ -64,7 +63,13 @@ const Sidebar = () => {
         <ul className="links">
           {links.map(({ id, text }) => (
             <li key={id} className={`${next === id ? "active" : ""}`}>
-              <button type="button" data-idx={id} onClick={handleOpenIndex}>
+              <button
+                type="button"
+                data-idx={id}
+                onClick={(e) =>
+                  dispatch(openIndex(+(e.target as HTMLElement).dataset.idx!))
+                }
+              >
                 {text}
               </button>
             </li>

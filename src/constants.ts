@@ -1,5 +1,3 @@
-// eslint-disable-next-line
-import React from "react";
 import { FaLinkedin, FaGithub, FaEnvelope } from "react-icons/fa";
 import { Home, Contact, Skills, Projects } from "./pages";
 
