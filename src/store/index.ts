@@ -1,10 +1,17 @@
-import { createStore } from "redux";
+import { configureStore } from "@reduxjs/toolkit";
 
-import reducer from "../reducer";
+import CuboidReducer from "./cuboidSlice";
+import sidebarReducer from "./sidebarSlice";
 
-const enhancer =
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
+const store = configureStore({
+  reducer: {
+    sidebar: sidebarReducer,
+    cuboid: CuboidReducer,
+  },
+});
 
-const store = createStore(reducer, enhancer);
+export type RootState = ReturnType<typeof store.getState>;
+
+export type AppDispatch = typeof store.dispatch;
 
 export default store;
