@@ -6,7 +6,7 @@ import { links, IProject } from "../constants";
 import { useAppSelector } from "../store/hooks";
 import { selectCuboid } from "../store/cuboidSlice";
 
-import { IProps } from "../types";
+import { IProps } from "../store/cuboidSlice";
 
 interface ProjectProps extends IProject {
   handleNext: () => void;

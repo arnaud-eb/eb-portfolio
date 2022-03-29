@@ -11,6 +11,8 @@ interface CuboidState {
   onGoing: boolean;
 }
 
+export type IProps = Pick<CuboidState, "next">;
+
 const initialState: CuboidState = {
   current: 1,
   next: 1,

@@ -6,7 +6,7 @@ import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { openIndex, selectCuboid } from "../store/cuboidSlice";
 import { openSidebar } from "../store/sidebarSlice";
 
-import { IProps } from "../types";
+import { IProps } from "../store/cuboidSlice";
 
 const Navbar = () => {
   const { next } = useAppSelector(selectCuboid);

@@ -7,7 +7,7 @@ import { nextPage, prevPage } from "../utils";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { moveDown, moveUp, selectCuboid } from "../store/cuboidSlice";
 
-import { IProps } from "../types";
+import { IProps } from "../store/cuboidSlice";
 
 const Footer = () => {
   const { next } = useAppSelector(selectCuboid);

@@ -4,7 +4,7 @@ import Sphere from "../components/Sphere";
 import PageHero from "../components/PageHero";
 import Bar2D from "../components/Bar2D";
 
-import { PageProps } from "../types";
+import { PageProps } from "../constants";
 
 const Skills = ({ text }: PageProps) => {
   return (

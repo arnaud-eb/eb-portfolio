@@ -9,8 +9,6 @@ import Footer from "./components/Footer";
 import { useAppDispatch, useAppSelector } from "./store/hooks";
 import { selectCuboid, reset, moveUp, moveDown } from "./store/cuboidSlice";
 
-import "./App.css";
-
 export const initialState = {
   isSidebarOpen: false,
   current: 1,

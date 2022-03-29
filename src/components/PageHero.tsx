@@ -4,7 +4,8 @@ import { links } from "../constants";
 import { useAppSelector } from "../store/hooks";
 import { selectCuboid } from "../store/cuboidSlice";
 
-import { PageProps, IProps } from "../types";
+import { PageProps } from "../constants";
+import { IProps } from "../store/cuboidSlice";
 
 const PageHero = ({ text }: PageProps) => {
   const { next } = useAppSelector(selectCuboid);

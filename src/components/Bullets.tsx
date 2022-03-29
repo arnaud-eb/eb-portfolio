@@ -4,7 +4,7 @@ import { links } from "../constants";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { selectCuboid, openIndex } from "../store/cuboidSlice";
 
-import { IProps } from "../types";
+import { IProps } from "../store/cuboidSlice";
 
 const Bullets = () => {
   const { next } = useAppSelector(selectCuboid);

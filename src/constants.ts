@@ -1,6 +1,10 @@
 import { FaLinkedin, FaGithub, FaEnvelope } from "react-icons/fa";
 import { Home, Contact, Skills, Projects } from "./pages";
 
+export interface PageProps {
+  text: string;
+}
+
 export const links = [
   {
     id: 1,
