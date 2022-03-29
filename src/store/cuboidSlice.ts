@@ -1,5 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+import { RootState } from ".";
+
 interface CuboidState {
   current: number;
   next: number;
@@ -21,5 +23,7 @@ export const cuboidSlice = createSlice({
   initialState,
   reducers: {},
 });
+
+export const selectCuboid = (state: RootState) => state.cuboid;
 
 export default cuboidSlice.reducer;
