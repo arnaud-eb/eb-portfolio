@@ -5,15 +5,16 @@ import { FaTimes } from "react-icons/fa";
 import SocialIcons from "./SocialIcons";
 import { links } from "../constants";
 import usePortfolio from "../use-portfolio";
-import { useAppSelector } from "../store/hooks";
+import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { selectCuboid } from "../store/cuboidSlice";
-import { selectSidebar } from "../store/sidebarSlice";
+import { selectSidebar, closeSidebar } from "../store/sidebarSlice";
 
 const Sidebar = () => {
   const { next } = useAppSelector(selectCuboid);
   const isSidebarOpen = useAppSelector(selectSidebar);
 
-  const { closeSidebar, handleOpenIndex } = usePortfolio();
+  const dispatch = useAppDispatch();
+  const { handleOpenIndex } = usePortfolio();
   const el = useRef<HTMLElement | null>(null);
 
   const keyDownHandler = (e: KeyboardEvent) => {
@@ -56,7 +57,7 @@ const Sidebar = () => {
           >
             eb
           </h3>
-          <button onClick={closeSidebar}>
+          <button onClick={() => dispatch(closeSidebar())}>
             <FaTimes />
           </button>
         </div>
