@@ -1,19 +1,23 @@
 import styled, { css } from "styled-components";
 
 import { links } from "../constants";
-import usePortfolio from "../use-portfolio";
+import { useAppDispatch, useAppSelector } from "../store/hooks";
+import { selectCuboid, openIndex } from "../store/cuboidSlice";
 
-import { IProps } from "../types";
+import { IProps } from "../store/cuboidSlice";
 
 const Bullets = () => {
-  const { next, handleOpenIndex } = usePortfolio();
+  const { next } = useAppSelector(selectCuboid);
+  const dispatch = useAppDispatch();
   return (
     <Wrapper next={next}>
       {links.map(({ id, text }) => (
         <button
           type="button"
           data-idx={id}
-          onClick={handleOpenIndex}
+          onClick={(e) =>
+            dispatch(openIndex(+(e.target as HTMLElement).dataset.idx!))
+          }
           key={id}
           className={`${next === id ? "active" : ""}`}
           aria-label={text}

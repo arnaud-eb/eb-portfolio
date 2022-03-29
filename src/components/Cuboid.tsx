@@ -1,8 +1,9 @@
 import { links } from "../constants";
-import usePortfolio from "../use-portfolio";
+import { useAppSelector } from "../store/hooks";
+import { selectCuboid } from "../store/cuboidSlice";
 
 const Cuboid = () => {
-  const { current, next, outClass, inClass } = usePortfolio();
+  const { current, next, outClass, inClass } = useAppSelector(selectCuboid);
   return (
     <div className="cuboid">
       {links.map(({ id, Component, colors, text }) => {

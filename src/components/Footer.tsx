@@ -4,26 +4,28 @@ import styled, { css } from "styled-components";
 import SocialIcons from "./SocialIcons";
 import { links } from "../constants";
 import { nextPage, prevPage } from "../utils";
-import usePortfolio from "../use-portfolio";
+import { useAppDispatch, useAppSelector } from "../store/hooks";
+import { moveDown, moveUp, selectCuboid } from "../store/cuboidSlice";
 
-import { IProps } from "../types";
+import { IProps } from "../store/cuboidSlice";
 
 const Footer = () => {
-  const { dispatchedMoveDown, dispatchedMoveUp, next } = usePortfolio();
+  const { next } = useAppSelector(selectCuboid);
+  const dispatch = useAppDispatch();
   return (
     <Wrapper next={next}>
       <h5>&copy; {new Date().getFullYear()} arnaud depierreux</h5>
       <div className="btn-container">
         <button
           className="up-arrow"
-          onClick={dispatchedMoveUp}
+          onClick={() => dispatch(moveUp())}
           aria-label={links[prevPage(next) - 1].text}
         >
           <IoIosArrowUp />
         </button>
         <button
           className="down-arrow"
-          onClick={dispatchedMoveDown}
+          onClick={() => dispatch(moveDown())}
           aria-label={links[nextPage(next) - 1].text}
         >
           <IoIosArrowDown />

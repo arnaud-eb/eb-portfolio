@@ -2,31 +2,45 @@ import { FaBars } from "react-icons/fa";
 import styled, { css } from "styled-components";
 
 import { links } from "../constants";
-import usePortfolio from "../use-portfolio";
+import { useAppDispatch, useAppSelector } from "../store/hooks";
+import { openIndex, selectCuboid } from "../store/cuboidSlice";
+import { openSidebar } from "../store/sidebarSlice";
 
-import { IProps } from "../types";
+import { IProps } from "../store/cuboidSlice";
 
 const Navbar = () => {
-  const { next, handleOpenIndex, openSidebar } = usePortfolio();
+  const { next } = useAppSelector(selectCuboid);
+  const dispatch = useAppDispatch();
   return (
     <Wrapper next={next}>
       <div className="nav-center">
         <div className="nav-header">
           <h3
             data-idx={1}
-            onClick={handleOpenIndex}
+            onClick={(e) =>
+              dispatch(openIndex(+(e.target as HTMLElement).dataset.idx!))
+            }
             data-text="arnaud depierreux"
           >
             eb
           </h3>
-          <button className="toggle-btn" onClick={openSidebar}>
+          <button
+            className="toggle-btn"
+            onClick={() => dispatch(openSidebar())}
+          >
             <FaBars />
           </button>
         </div>
         <ul className="nav-links">
           {links.map(({ id, text }) => (
             <li key={id} className={`${next === id ? "active" : ""}`}>
-              <button type="button" data-idx={id} onClick={handleOpenIndex}>
+              <button
+                type="button"
+                data-idx={id}
+                onClick={(e) =>
+                  dispatch(openIndex(+(e.target as HTMLElement).dataset.idx!))
+                }
+              >
                 {text}
               </button>
             </li>

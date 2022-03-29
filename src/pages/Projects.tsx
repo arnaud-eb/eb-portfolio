@@ -5,7 +5,7 @@ import PageHero from "../components/PageHero";
 import Project from "../components/Project";
 import { projects, IProject } from "../constants";
 
-import { PageProps } from "../types";
+import { PageProps } from "../constants";
 
 const Projects = ({ text }: PageProps) => {
   const projectRef = useRef<IProject[]>();

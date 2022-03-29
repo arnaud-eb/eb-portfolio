@@ -5,7 +5,7 @@ import PageHero from "../components/PageHero";
 import SocialIcons from "../components/SocialIcons";
 import styled from "styled-components";
 
-import { PageProps } from "../types";
+import { PageProps } from "../constants";
 
 const Contact = ({ text }: PageProps) => {
   const [data, setData] = useState({ email: "", subject: "", message: "" });
