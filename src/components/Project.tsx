@@ -3,7 +3,8 @@ import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { FaGithub } from "react-icons/fa";
 
 import { links, IProject } from "../constants";
-import usePortfolio from "../use-portfolio";
+import { useAppSelector } from "../store/hooks";
+import { selectCuboid } from "../store/cuboidSlice";
 
 import { IProps } from "../types";
 
@@ -21,7 +22,7 @@ const Project = ({
   handleNext,
   handlePrev,
 }: ProjectProps) => {
-  const { next } = usePortfolio();
+  const { next } = useAppSelector(selectCuboid);
   return (
     <Wrapper next={next}>
       <div>

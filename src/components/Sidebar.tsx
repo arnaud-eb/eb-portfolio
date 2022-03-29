@@ -5,9 +5,15 @@ import { FaTimes } from "react-icons/fa";
 import SocialIcons from "./SocialIcons";
 import { links } from "../constants";
 import usePortfolio from "../use-portfolio";
+import { useAppSelector } from "../store/hooks";
+import { selectCuboid } from "../store/cuboidSlice";
+import { selectSidebar } from "../store/sidebarSlice";
 
 const Sidebar = () => {
-  const { next, isSidebarOpen, closeSidebar, handleOpenIndex } = usePortfolio();
+  const { next } = useAppSelector(selectCuboid);
+  const isSidebarOpen = useAppSelector(selectSidebar);
+
+  const { closeSidebar, handleOpenIndex } = usePortfolio();
   const el = useRef<HTMLElement | null>(null);
 
   const keyDownHandler = (e: KeyboardEvent) => {

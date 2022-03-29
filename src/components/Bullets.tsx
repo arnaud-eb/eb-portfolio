@@ -2,11 +2,14 @@ import styled, { css } from "styled-components";
 
 import { links } from "../constants";
 import usePortfolio from "../use-portfolio";
+import { useAppSelector } from "../store/hooks";
+import { selectCuboid } from "../store/cuboidSlice";
 
 import { IProps } from "../types";
 
 const Bullets = () => {
-  const { next, handleOpenIndex } = usePortfolio();
+  const { handleOpenIndex } = usePortfolio();
+  const { next } = useAppSelector(selectCuboid);
   return (
     <Wrapper next={next}>
       {links.map(({ id, text }) => (

@@ -7,6 +7,9 @@ import Bullets from "./components/Bullets";
 import Footer from "./components/Footer";
 
 import usePortfolio from "./use-portfolio";
+import { useAppSelector } from "./store/hooks";
+import { selectCuboid } from "./store/cuboidSlice";
+
 import "./App.css";
 
 export const initialState = {
@@ -19,8 +22,9 @@ export const initialState = {
 };
 
 function App() {
-  const { dispatchedReset, dispatchedMoveUp, dispatchedMoveDown, next } =
+  const { dispatchedReset, dispatchedMoveUp, dispatchedMoveDown } =
     usePortfolio();
+  const { next } = useAppSelector(selectCuboid);
 
   useEffect(() => {
     const id = setTimeout(() => {

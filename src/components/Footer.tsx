@@ -5,11 +5,14 @@ import SocialIcons from "./SocialIcons";
 import { links } from "../constants";
 import { nextPage, prevPage } from "../utils";
 import usePortfolio from "../use-portfolio";
+import { useAppSelector } from "../store/hooks";
+import { selectCuboid } from "../store/cuboidSlice";
 
 import { IProps } from "../types";
 
 const Footer = () => {
-  const { dispatchedMoveDown, dispatchedMoveUp, next } = usePortfolio();
+  const { next } = useAppSelector(selectCuboid);
+  const { dispatchedMoveDown, dispatchedMoveUp } = usePortfolio();
   return (
     <Wrapper next={next}>
       <h5>&copy; {new Date().getFullYear()} arnaud depierreux</h5>

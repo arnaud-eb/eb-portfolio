@@ -3,11 +3,14 @@ import styled, { css } from "styled-components";
 
 import { links } from "../constants";
 import usePortfolio from "../use-portfolio";
+import { useAppSelector } from "../store/hooks";
+import { selectCuboid } from "../store/cuboidSlice";
 
 import { IProps } from "../types";
 
 const Navbar = () => {
-  const { next, handleOpenIndex, openSidebar } = usePortfolio();
+  const { next } = useAppSelector(selectCuboid);
+  const { handleOpenIndex, openSidebar } = usePortfolio();
   return (
     <Wrapper next={next}>
       <div className="nav-center">
