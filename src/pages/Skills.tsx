@@ -14,7 +14,7 @@ const Skills = ({ text }: PageProps) => {
         <article className="skills-bar">
           <p>
             I use HTML, CSS and JavaScript. Though constantly changing, my focus
-            right now is React, TypeScript and Redux.
+            right now is React, TypeScript and Node.js.
           </p>
           <Bar2D />
         </article>

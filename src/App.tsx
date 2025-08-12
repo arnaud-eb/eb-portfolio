@@ -8,6 +8,7 @@ import Footer from "./components/Footer";
 
 import { useAppDispatch, useAppSelector } from "./store/hooks";
 import { selectCuboid, reset, moveUp, moveDown } from "./store/cuboidSlice";
+import store from "./store";
 
 export const initialState = {
   isSidebarOpen: false,
@@ -48,14 +49,20 @@ function App() {
 
   useEffect(() => {
     const handler = (e: WheelEvent) => {
-      if (e.deltaY < 0) {
-        dispatch(moveUp());
+      const threshold = 10;
+      const { onGoing } = selectCuboid(store.getState());
+
+      if (onGoing || Math.abs(e.deltaY) < threshold) {
+        return;
       }
-      if (e.deltaY > 0) {
+
+      if (e.deltaY < -threshold) {
+        dispatch(moveUp());
+      } else if (e.deltaY > threshold) {
         dispatch(moveDown());
       }
     };
-    window.addEventListener("wheel", handler);
+    window.addEventListener("wheel", handler, { passive: true });
     return () => {
       window.removeEventListener("wheel", handler);
     };
