@@ -32,7 +32,7 @@ const Wrapper = styled.div<IProps>(
     position: absolute;
     top: 40%;
     right: 2%;
-    display: flex;
+    display: none;
     flex-direction: column;
     transform: translateX(300%);
     animation: start 0.6s linear 4s forwards;
@@ -73,6 +73,8 @@ const Wrapper = styled.div<IProps>(
     }
 
     @media screen and (min-width: 800px) {
+      display: flex;
+      
       button {
         width: 15px;
         height: 15px;

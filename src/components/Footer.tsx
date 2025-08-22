@@ -41,25 +41,22 @@ const Wrapper = styled.footer<IProps>(
     position: absolute;
     left: 0;
     bottom: 0;
-    padding: 0 2rem;
+    padding: 0 2rem 1rem;
     z-index: 1;
     height: 4rem;
-    width: 95%;
+    width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     transform: translateY(100%);
     animation: start 0.6s linear 4s forwards;
 
     h5 {
-      font-size: 0.675rem;
-      transition: var(--transition);
-      color: ${links[next - 1].colors[1]};
-      opacity: 0.8;
+      display: none;
     }
 
     svg {
-      font-size: 1rem;
+      font-size: 1.5rem;
       color: ${links[next - 1].colors[1]};
       opacity: 0.8;
       cursor: pointer;
@@ -72,7 +69,21 @@ const Wrapper = styled.footer<IProps>(
     }
 
     .btn-container {
-      display: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 0 20%;
+    }
+
+    .down-arrow,
+    .up-arrow {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: transparent;
+      border: none;
+      transition: var(--transition);
     }
 
     .up-arrow:hover svg {
@@ -84,6 +95,8 @@ const Wrapper = styled.footer<IProps>(
     }
 
     .social-icons {
+      position: absolute;
+      right: 4rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -99,32 +112,25 @@ const Wrapper = styled.footer<IProps>(
     }
 
     @media screen and (min-width: 800px) {
-      justify-content: center;
+      padding: 0 2rem;
+      justify-content: space-between;
+      width: 95%;
 
       .btn-container {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
         margin: 0 30%;
       }
 
-      .down-arrow,
-      .up-arrow {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: transparent;
-        border: none;
-        transition: var(--transition);
-      }
-
-      svg {
-        font-size: 1.5rem;
-      }
-
       .social-icons {
+        position: static;
         justify-content: space-evenly;
+      }
+
+      h5 {
+        display: block;
+        font-size: 0.675rem;
+        transition: var(--transition);
+        color: ${links[next - 1].colors[1]};
+        opacity: 0.8;
       }
     }
 

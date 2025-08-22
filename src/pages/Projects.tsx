@@ -69,7 +69,7 @@ const Wrapper = styled.div`
   display: grid;
   align-items: stretch;
   grid-column-gap: 1.5rem;
-  padding: 2rem 25%;
+  padding: 2rem 15%;
 
   article:nth-child(1) {
     display: grid;

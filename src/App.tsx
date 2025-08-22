@@ -68,6 +68,44 @@ function App() {
     };
   }, [dispatch]);
 
+  useEffect(() => {
+    let startY = 0;
+
+    const handleTouchStart = (e: TouchEvent) => {
+      startY = e.touches[0].clientY;
+    };
+
+    const handleTouchEnd = (e: TouchEvent) => {
+      const threshold = 50;
+      const { onGoing } = selectCuboid(store.getState());
+
+      if (onGoing) {
+        return;
+      }
+
+      const endY = e.changedTouches[0].clientY;
+      const deltaY = startY - endY;
+
+      if (Math.abs(deltaY) < threshold) {
+        return;
+      }
+
+      if (deltaY > threshold) {
+        dispatch(moveDown());
+      } else if (deltaY < -threshold) {
+        dispatch(moveUp());
+      }
+    };
+
+    window.addEventListener("touchstart", handleTouchStart, { passive: true });
+    window.addEventListener("touchend", handleTouchEnd, { passive: true });
+
+    return () => {
+      window.removeEventListener("touchstart", handleTouchStart);
+      window.removeEventListener("touchend", handleTouchEnd);
+    };
+  }, [dispatch]);
+
   return (
     <>
       <Navbar />

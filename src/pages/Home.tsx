@@ -24,9 +24,8 @@ const Home = () => {
         <h1>Hi there!</h1>
         <h1>I'm Arnaud, web developer.</h1>
         <h2>
-          This portfolio is a glimpse at my experiences <br />
-          as I learn new things, fail spectacularly <br />
-          and make cool stuff along the way.
+          This portfolio is a glimpse at my experiences as I learn new things,
+          fail spectacularly and make cool stuff along the way.
         </h2>
         <button
           type="button"
@@ -116,21 +115,26 @@ const Wrapper = styled.section`
     position: absolute;
     z-index: 7;
     text-align: left;
-    margin: -50px 0 0 -150px;
-    width: auto;
-    height: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    max-width: 700px;
     top: 30%;
-    left: 25%;
     font-size: 1.2rem;
     font-weight: 700;
     color: var(--clr-black);
 
-    h1,
-    h2 {
+    h1 {
       white-space: nowrap;
       overflow: hidden;
       width: 100%;
+      font-size: 2rem;
       animation: ${type} 0.3s steps(60, end) 3.7s;
+      text-transform: none;
+      text-shadow: var(--light-shadow);
+    }
+
+    h2 {
       text-transform: none;
       text-shadow: var(--light-shadow);
     }
@@ -139,8 +143,7 @@ const Wrapper = styled.section`
       color: var(--clr-light-blue-2);
     }
 
-    h1:nth-of-type(2),
-    h2 {
+    h1:nth-of-type(2) {
       animation: ${type2} 0.5s steps(60, end) 3.7s;
     }
 
@@ -274,14 +277,19 @@ const Wrapper = styled.section`
     }
   }
 
-  @media screen and (max-width: 850px) {
+  @media screen and (max-width: 1199px) {
     .text {
-      h1 {
-        font-size: 2rem;
-      }
+      max-width: 650px;
+
       h2 {
         font-size: 1.5rem;
       }
+    }
+  }
+
+  @media screen and (max-width: 850px) {
+    .text {
+      width: 90%;
     }
   }
 
@@ -293,7 +301,6 @@ const Wrapper = styled.section`
       h2 {
         font-size: 1rem;
       }
-      padding-left: 3.5rem;
     }
   }
 `;

@@ -30,7 +30,7 @@ const Wrapper = styled.div`
   height: 90%;
   padding-bottom: 1rem;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   place-items: center;
 
   .skills-bar,
@@ -49,11 +49,13 @@ const Wrapper = styled.div`
 
   .word-sphere {
     background-color: transparent;
-    display: grid;
+    display: none;
     place-items: center;
   }
 
   @media screen and (min-width: 1000px) {
+    grid-template-columns: repeat(2, 1fr);
+    
     .skills-bar {
       grid-template-rows: auto 1fr;
     }
@@ -66,6 +68,10 @@ const Wrapper = styled.div`
       font-size: 1rem;
       font-family: "Montserrat", sans-serif;
       text-shadow: var(--dark-shadow);
+    }
+
+    .word-sphere {
+      display: grid;
     }
   }
 `;

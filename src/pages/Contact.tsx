@@ -125,7 +125,7 @@ const Contact = ({ text }: PageProps) => {
 const Wrapper = styled.section`
   height: 90%;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   font-size: 0.875rem;
 
   article {
@@ -133,7 +133,7 @@ const Wrapper = styled.section`
   }
 
   article:nth-of-type(1) {
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
@@ -239,7 +239,13 @@ const Wrapper = styled.section`
   }
 
   @media screen and (min-width: 950px) {
+    grid-template-columns: repeat(2, 1fr);
     font-size: 1.2rem;
+
+    article:nth-of-type(1) {
+      display: flex;
+    }
+
     p {
       line-height: 2rem;
     }
